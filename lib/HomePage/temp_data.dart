@@ -11,6 +11,7 @@ class JsonData extends StatefulWidget {
   String location;
   JsonData({this.api, Key key, this.lat, this.lon, this.location})
       : super(key: key);
+
   @override
   JsonDataState createState() => JsonDataState();
 }

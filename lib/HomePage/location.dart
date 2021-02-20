@@ -6,6 +6,7 @@ class Locations extends StatefulWidget {
   final String api;
   String city;
   Locations({this.api, this.city, Key key}) : super(key: key);
+
   @override
   _LocationsState createState() => _LocationsState();
 }
@@ -40,6 +41,7 @@ class _LocationsState extends State<Locations> {
   Future<LocationData> _getLocation() async {
     var currentLocation;
     try {
+      //todo: request permision
       currentLocation = await coords.getLocation(); //getLocation();
     } catch (e) {
       currentLocation = null;
