@@ -2,7 +2,7 @@
 Тестируем Flutter для курсов и просто так
 
 ## Планирую сделать
-Приложение погоды на основе ([Weather API - OpenWeatherMap](https://openweathermap.org/api))
+Приложение погоды на основе [Weather API - OpenWeatherMap](https://openweathermap.org/api)
 
 ## План
 1. [x] Сделать форму текущей погоды
