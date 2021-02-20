@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Location extends StatefulWidget {
+  final String location;
+  Location({this.location, Key key}) : super(key: key);
+
   @override
   _LocationState createState() => _LocationState();
 }
@@ -12,7 +15,7 @@ class _LocationState extends State<Location> {
       child: Row(
         children: [
           Icon(Icons.search),
-          Text('Локация'),
+          Text(widget.location),
           Icon(
             Icons.room,
           )
