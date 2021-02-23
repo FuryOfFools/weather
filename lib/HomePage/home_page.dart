@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future _getLocation() async {
+    //var location = SelectedLocation(city: 'test');
     var location = SelectedLocation(city: this.location.city);
     var status = false;
     LocationData locData;

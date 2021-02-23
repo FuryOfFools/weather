@@ -1,3 +1,3 @@
 class WeatherInfo {
-  //todo сделать класс
+  //todo: сделать класс
 }
