@@ -3,15 +3,15 @@ class Album {
   List<Weather> weather;
   String base;
   Main main;
-  int visibility;
+  num visibility;
   Wind wind;
   Clouds clouds;
-  int dt;
+  num dt;
   Sys sys;
-  int timezone;
-  int id;
+  num timezone;
+  num id;
   String name;
-  int cod;
+  num cod;
 
   Album(
       {this.coord,
@@ -101,7 +101,7 @@ class Coord {
 }
 
 class Weather {
-  int id;
+  num id;
   String main;
   String description;
   String icon;
@@ -130,8 +130,8 @@ class Main {
   num feelsLike;
   num tempMin;
   num tempMax;
-  int pressure;
-  int humidity;
+  num pressure;
+  num humidity;
 
   Main(
       {this.temp,
@@ -164,7 +164,7 @@ class Main {
 
 class Wind {
   num speed;
-  int deg;
+  num deg;
 
   Wind({this.speed, this.deg});
 
@@ -182,7 +182,7 @@ class Wind {
 }
 
 class Clouds {
-  int all;
+  num all;
 
   Clouds({this.all});
 
@@ -198,11 +198,11 @@ class Clouds {
 }
 
 class Sys {
-  int type;
-  int id;
+  num type;
+  num id;
   String country;
-  int sunrise;
-  int sunset;
+  num sunrise;
+  num sunset;
 
   Sys({this.type, this.id, this.country, this.sunrise, this.sunset});
 
