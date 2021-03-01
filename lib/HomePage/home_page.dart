@@ -1,22 +1,20 @@
 // Dart & Flutter
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
+import 'package:weather/Classes/fetch_album.dart';
 // Classes
 import 'package:weather/Classes/selected_location.dart';
-import 'package:weather/Classes/weather_info.dart';
+import 'package:weather/Classes/album.dart';
 // Widgets
-import 'package:weather/HomePage/temperature.dart';
-import 'package:weather/HomePage/weather.dart';
+import 'package:weather/HomePage/weather_data.dart';
 
-class HomePage extends StatefulWidget {
+class WeatherPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _WeatherPageState createState() => _WeatherPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _WeatherPageState extends State<WeatherPage> {
+  var api = '98a3681fb714bcff7aa402873d3642d6';
   var location = SelectedLocation();
-  String api = '98a3681fb714bcff7aa402873d3642d6';
-  String curWeather = 'Rain', descWeather = '', temp = '-8', feelTemp = '-12';
 
   @override
   Widget build(BuildContext context) {
@@ -24,75 +22,44 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(location.city),
         leading: IconButton(
-          icon: Icon(
-            Icons.room,
-            color: Colors.white,
-          ),
+          icon: Icon(Icons.room),
           onPressed: _getLocation,
         ),
       ),
       body: SafeArea(
-        child: FutureBuilder(
-            future: _getData(api, location),
-            builder: (content, snapshot) {
-              if (snapshot.hasData)
-                return WeatherData(
-                  curWeather: curWeather,
-                  descWeather: descWeather,
-                  temp: temp,
-                  feelTemp: feelTemp,
-                );
-              else
-                return Text('Не удалось определить погоду');
-            }),
+        child: Container(
+          color: Colors.white70,
+          child: FutureBuilder(
+              future: _getData(api, location),
+              builder: (content, snapshot) {
+                if (snapshot.hasData) {
+                  Album album = snapshot.data;
+                  location.city = album.name;
+                  return WeatherData(
+                    curWeather: album.weather[0].main,
+                    descWeather: album.weather[0].description,
+                    icon: album.weather[0].icon,
+                    temp: album.main.temp,
+                    feelTemp: album.main.feelsLike,
+                  );
+                } else
+                  return CircularProgressIndicator();
+              }),
+        ),
       ),
     );
   }
 
-  Future _getLocation() async {
-    //var location = SelectedLocation(city: 'test');
-    var location = SelectedLocation(city: this.location.city);
-    var status = false;
-    LocationData locData;
-    var loc = Location();
-    try {
-      status = await loc.requestService();
-      if (status) {
-        locData = await loc.getLocation();
-        location.lat = locData.latitude.toString();
-        location.lon = locData.longitude.toString();
-        this.location = location;
-      }
-    } catch (e) {
-      throw Exception('Ошибка получения местоположения');
-    }
-    return;
+  void _getLocation() {
+    setState(() async {
+      location = await location.getLocation();
+    });
   }
 
-  Future<WeatherInfo> _getData(String api, SelectedLocation location) {
-    Future.delayed(Duration(seconds: 10));
-    return Future.value(WeatherInfo());
-    //todo: Доделать метод получения данных
-  }
-}
-
-class WeatherData extends StatelessWidget {
-  final String curWeather;
-  final String descWeather;
-  final String temp;
-  final String feelTemp;
-  WeatherData(
-      {this.curWeather, this.descWeather, this.temp, this.feelTemp, Key key})
-      : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          CurrentWeather(curWeather: curWeather, descWeather: descWeather),
-          CurrentTemperature(temp: temp, feelTemp: feelTemp),
-        ],
-      ),
-    );
+  Future<Album> _getData(String api, SelectedLocation location) {
+    if (location.lat == null && location.lon == null)
+      return fetchAlbumWithCity(api, location.city);
+    else
+      return fetchAlbumWithCoords(api, location.lat, location.lon);
   }
 }
