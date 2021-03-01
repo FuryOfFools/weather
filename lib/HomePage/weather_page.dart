@@ -15,6 +15,7 @@ class WeatherPage extends StatefulWidget {
 class _WeatherPageState extends State<WeatherPage> {
   var api = '98a3681fb714bcff7aa402873d3642d6';
   var location = SelectedLocation();
+  Album album;
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +31,11 @@ class _WeatherPageState extends State<WeatherPage> {
         child: Container(
           color: Colors.white70,
           child: FutureBuilder(
+              //TODO: передалать через ValueListenableBuilder
               future: _getData(api, location),
               builder: (content, snapshot) {
                 if (snapshot.hasData) {
-                  Album album = snapshot.data;
+                  album = snapshot.data;
                   location.city = album.name;
                   return WeatherData(
                     curWeather: album.weather[0].main,
@@ -53,6 +55,7 @@ class _WeatherPageState extends State<WeatherPage> {
   void _getLocation() {
     setState(() async {
       location = await location.getLocation();
+      album = await _getData(api, location);
     });
   }
 

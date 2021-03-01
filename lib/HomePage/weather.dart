@@ -1,40 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CurrentWeather extends StatefulWidget {
-  final String curWeather;
-  final String descWeather;
-  final String icon;
-  CurrentWeather({this.curWeather, this.descWeather, this.icon, Key key})
-      : super(key: key);
-
-  @override
-  _CurrentWeatherState createState() => _CurrentWeatherState();
-}
-
-class _CurrentWeatherState extends State<CurrentWeather> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image(
-                width: 60,
-                height: 60,
-                image: AssetImage(_changeWeatherPng(widget.icon)),
-              ),
-              Text(widget.curWeather),
-            ],
-          ),
-          Text(widget.descWeather),
-        ],
-      ),
-    );
-  }
-
-  var _weatherPng = {
+class CurrentWeather extends StatelessWidget {
+  final _weatherPng = {
     '01d': 'assets/images/01d.png',
     '01n': 'assets/images/01n.png',
     '02d': 'assets/images/02d.png',
@@ -54,6 +21,33 @@ class _CurrentWeatherState extends State<CurrentWeather> {
     '50d': 'assets/images/50d.png',
     '50n': 'assets/images/50n.png',
   };
+  final String curWeather;
+  final String descWeather;
+  final String icon;
+  CurrentWeather({this.curWeather, this.descWeather, this.icon, Key key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image(
+                width: 60,
+                height: 60,
+                image: AssetImage(_changeWeatherPng(icon)),
+              ),
+              Text(curWeather),
+            ],
+          ),
+          Text(descWeather),
+        ],
+      ),
+    );
+  }
 
   String _changeWeatherPng(String weather) {
     return _weatherPng[weather];

@@ -6,8 +6,8 @@ class WeatherData extends StatelessWidget {
   final String curWeather;
   final String descWeather;
   final String icon;
-  final double temp;
-  final double feelTemp;
+  final num temp;
+  final num feelTemp;
   WeatherData(
       {this.curWeather,
       this.descWeather,

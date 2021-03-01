@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 
-class CurrentTemperature extends StatefulWidget {
-  final double temp;
-  final double feelTemp;
+class CurrentTemperature extends StatelessWidget {
+  final num temp;
+  final num feelTemp;
   CurrentTemperature({this.temp, this.feelTemp, Key key}) : super(key: key);
 
-  @override
-  _CurrentTemperatureState createState() => _CurrentTemperatureState();
-}
-
-class _CurrentTemperatureState extends State<CurrentTemperature> {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: [
-          Text('${widget.temp} C'),
-          Text('Feel like ${widget.feelTemp} C'),
+          Text('$temp C'),
+          Text('Feel like $feelTemp C'),
         ],
       ),
     );
