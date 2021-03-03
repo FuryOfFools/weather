@@ -40,7 +40,7 @@ class _WeatherPageState extends State<WeatherPage> {
         ),
         body: SafeArea(
           child: Container(
-            color: Colors.white70,
+            color: Colors.white38,
             child: WeatherData(albums: widget.albums),
           ),
         ),
