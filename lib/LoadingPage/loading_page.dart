@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather/Classes/album.dart';
+import 'package:weather/Classes/albums.dart';
 import 'package:weather/Classes/fetch_album.dart';
 import 'package:weather/Classes/selected_location.dart';
 import 'package:weather/WeatherPage/weather_page.dart';
@@ -15,7 +15,7 @@ class LoadingPage extends StatefulWidget {
 
 class _LoadingPageState extends State<LoadingPage> {
   SelectedLocation loc;
-  Album album;
+  Albums albums;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,11 @@ class _LoadingPageState extends State<LoadingPage> {
           future: _getData(widget.api, loc),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              album = snapshot.data;
-              loc.city = album.name;
+              albums = snapshot.data;
+              loc.city = albums.album.name;
               return WeatherPage(
                 location: loc,
-                album: album,
+                albums: albums,
               );
             } else
               return Center(child: CircularProgressIndicator());
@@ -40,10 +40,18 @@ class _LoadingPageState extends State<LoadingPage> {
     );
   }
 
-  Future<Album> _getData(String api, SelectedLocation location) {
-    if (location.lat == null && location.lon == null)
-      return fetchAlbumWithCity(api, location.city);
-    else
-      return fetchAlbumWithCoords(api, location.lat, location.lon);
+  Future<Albums> _getData(String api, SelectedLocation location) async {
+    var albums = Albums();
+    if (location.lat == null && location.lon == null) {
+      albums.album = await fetchAlbumWithCity(api, location.city);
+      albums.album5days = await fetchAlbum5WithCity(api, location.city);
+      return albums;
+    } else {
+      albums.album =
+          await fetchAlbumWithCoords(api, location.lat, location.lon);
+      albums.album5days =
+          await fetchAlbum5WithCoords(api, location.lat, location.lon);
+      return albums;
+    }
   }
 }

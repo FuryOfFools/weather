@@ -31,14 +31,15 @@ Future<Album> fetchAlbumWithCity(String api, String location) async {
   }
 }
 
-Future<Album> fetchAlbum5WithCoords(String api, String lat, String lon) async {
+Future<Album5Days> fetchAlbum5WithCoords(
+    String api, String lat, String lon) async {
   final response = await http.get(Uri.https(
       'api.openweathermap.org',
       '/data/2.5/forecast',
       {'lat': lat, 'lon': lon, 'appid': '$api', 'units': 'metric'}));
 
   if (response.statusCode == 200) {
-    return Album.fromJson(jsonDecode(response.body));
+    return Album5Days.fromJson(jsonDecode(response.body));
   } else {
     throw Exception('Failed to load album');
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CurrentWeather extends StatelessWidget {
-  final _weatherPng = {
+  static const _weatherPng = {
     '01d': 'assets/images/01d.png',
     '01n': 'assets/images/01n.png',
     '02d': 'assets/images/02d.png',
@@ -24,7 +24,7 @@ class CurrentWeather extends StatelessWidget {
   final String curWeather;
   final String descWeather;
   final String icon;
-  CurrentWeather({this.curWeather, this.descWeather, this.icon, Key key})
+  const CurrentWeather({this.curWeather, this.descWeather, this.icon, Key key})
       : super(key: key);
 
   @override
