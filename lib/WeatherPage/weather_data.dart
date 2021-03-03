@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather/Classes/albums.dart';
-import 'package:weather/WeatherPage/current_weather.dart';
+import 'package:weather/WeatherPage/CurrentWeather/current_weather.dart';
 import 'package:weather/WeatherPage/time_weather.dart';
 
 class WeatherData extends StatelessWidget {

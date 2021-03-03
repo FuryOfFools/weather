@@ -1,16 +1,41 @@
 class Album {
+  /// Geolocation
   Coord coord;
+
+  /// Weather
   List<Weather> weather;
+
+  /// Internal parameter
   String base;
+
+  /// temperature, pressure, humidity
   Main main;
+
+  /// Visibility, meter
   num visibility;
+
+  /// Wind speed, direction
   Wind wind;
+
+  /// Cloudiness, %
   Clouds clouds;
+
+  /// Time of data calculation, unix, UTC
   num dt;
+
+  /// Country code, sunrise, sunset
   Sys sys;
+
+  /// Shift in seconds from UTC
   num timezone;
+
+  /// City ID
   num id;
+
+  /// City name
   String name;
+
+  /// Internal parameter
   num cod;
 
   Album(
@@ -52,7 +77,10 @@ class Album {
 }
 
 class Coord {
+  /// City geo location, longitude
   num lon;
+
+  /// City geo location, latitude
   num lat;
 
   Coord({this.lon, this.lat});
@@ -63,10 +91,18 @@ class Coord {
   }
 }
 
+/// Weather
 class Weather {
+  /// Weather condition id
   num id;
+
+  /// Group of weather parameters (Rain, Snow, Extreme etc.)
   String main;
+
+  ///  Weather condition within the group. You can get the output in your language.
   String description;
+
+  /// Weather icon id
   String icon;
 
   Weather({this.id, this.main, this.description, this.icon});
@@ -80,11 +116,22 @@ class Weather {
 }
 
 class Main {
+  /// Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
   num temp;
+
+  /// Temperature. This temperature parameter accounts for the human perception of weather. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
   num feelsLike;
+
+  /// Minimum temperature at the moment. This is minimal currently observed temperature (within large megalopolises and urban areas). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
   num tempMin;
+
+  /// Maximum temperature at the moment. This is maximal currently observed temperature (within large megalopolises and urban areas). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
   num tempMax;
+
+  /// Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa
   num pressure;
+
+  /// Humidity, %
   num humidity;
 
   Main(
@@ -106,7 +153,10 @@ class Main {
 }
 
 class Wind {
+  /// Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
   num speed;
+
+  /// Wind direction, degrees (meteorological)
   num deg;
 
   Wind({this.speed, this.deg});
@@ -118,6 +168,7 @@ class Wind {
 }
 
 class Clouds {
+  /// Cloudiness, %
   num all;
 
   Clouds({this.all});
@@ -128,10 +179,19 @@ class Clouds {
 }
 
 class Sys {
+  /// Internal parameter
   num type;
+
+  /// Internal parameter
   num id;
+
+  /// Country code
   String country;
+
+  /// Sunrise time, unix, UTC
   num sunrise;
+
+  /// Sunset time, unix, UTC
   num sunset;
 
   Sys({this.type, this.id, this.country, this.sunrise, this.sunset});

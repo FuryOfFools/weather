@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:weather/Classes/album.dart' as Alb;
-import 'package:weather/WeatherPage/additional_info.dart';
-import 'package:weather/WeatherPage/temperature.dart';
-import 'package:weather/WeatherPage/weather.dart';
+import 'package:weather/WeatherPage/CurrentWeather/additional_info.dart';
+import 'package:weather/WeatherPage/CurrentWeather/temperature.dart';
+import 'package:weather/WeatherPage/CurrentWeather/weather.dart';
 
 class CurrentWeather extends StatelessWidget {
   final Alb.Album album;
@@ -19,7 +19,14 @@ class CurrentWeather extends StatelessWidget {
         CurrentTemperature(
             temp: album.main.temp.toInt(),
             feelTemp: album.main.feelsLike.toInt()),
-        AdditionalInfo(),
+        //TODO: добавить sunset, sunrise
+        AdditionalInfo(
+          wind: album.wind,
+          humidity: album.main.humidity,
+          pressure: album.main.pressure,
+          visibility: album.visibility,
+          clouds: album.clouds,
+        ),
       ],
     );
   }
