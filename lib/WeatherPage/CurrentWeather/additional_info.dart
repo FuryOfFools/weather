@@ -38,7 +38,7 @@ class AdditionalInfo extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'Wind: ${wind.speed}',
+                      'Wind: ${wind.speed} m/s',
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.grey[800],
@@ -61,7 +61,7 @@ class AdditionalInfo extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Pressure: ${pressure}hPa',
+                  'Pressure: ${pressure} hPa',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey[800],
@@ -73,7 +73,7 @@ class AdditionalInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  'Visibility: ${visibility}m',
+                  'Visibility: ${visibility} m',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey[800],
