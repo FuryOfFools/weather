@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather/Classes/album.dart';
 
-// album.wind,
-// album.main.humidity,
-// album.main.pressure,
-// album.visibility,
-// album.clouds,
-// album.sys.sunrise,
-// album.sys.sunset
 class AdditionalInfo extends StatelessWidget {
   final Wind wind;
   final num humidity;
@@ -61,7 +54,7 @@ class AdditionalInfo extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Pressure: ${pressure} hPa',
+                  'Pressure: $pressure hPa',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey[800],
@@ -73,7 +66,7 @@ class AdditionalInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  'Visibility: ${visibility} m',
+                  'Visibility: $visibility m',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey[800],
