@@ -9,6 +9,7 @@ class WeatherList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true,
       itemCount: album5days.list.length,
       itemBuilder: (context, int index) {
         return DayWeather(weather: album5days.list[index]);

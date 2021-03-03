@@ -13,6 +13,7 @@ class WeatherData extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ListView(
+        scrollDirection: Axis.vertical,
         children: [
           CurrentWeather(
               curWeather: albums.album.weather[0].main,
