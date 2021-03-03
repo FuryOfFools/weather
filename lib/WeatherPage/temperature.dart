@@ -10,8 +10,19 @@ class CurrentTemperature extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Text('$temp C'),
-          Text('Feel like $feelTemp C'),
+          Text(
+            '$temp C',
+            style: TextStyle(
+              fontSize: 50,
+            ),
+          ),
+          Text(
+            'Feel like $feelTemp C',
+            style: TextStyle(
+              fontSize: 13,
+              color: Colors.grey[700],
+            ),
+          ),
         ],
       ),
     );

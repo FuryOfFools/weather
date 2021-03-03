@@ -30,6 +30,7 @@ class CurrentWeather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(20),
       child: Column(
         children: [
           Row(
@@ -37,13 +38,25 @@ class CurrentWeather extends StatelessWidget {
             children: [
               Image(
                 width: 60,
-                height: 60,
+                height: 50,
                 image: AssetImage(_changeWeatherPng(icon)),
               ),
-              Text(curWeather),
+              Text(
+                curWeather,
+                style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.grey[800],
+                ),
+              ),
             ],
           ),
-          Text(descWeather),
+          Text(
+            descWeather,
+            style: TextStyle(
+              fontSize: 13,
+              color: Colors.grey[700],
+            ),
+          ),
         ],
       ),
     );

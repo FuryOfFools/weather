@@ -17,7 +17,8 @@ class WeatherData extends StatelessWidget {
               descWeather: album.weather[0].description,
               icon: album.weather[0].icon),
           CurrentTemperature(
-              temp: album.main.temp, feelTemp: album.main.feelsLike),
+              temp: album.main.temp.toInt(),
+              feelTemp: album.main.feelsLike.toInt()),
         ],
       ),
     );
