@@ -20,7 +20,7 @@ class Weather extends StatelessWidget {
     '13n': 'assets/images/13n.png',
     '50d': 'assets/images/50d.png',
     '50n': 'assets/images/50n.png',
-  };
+  }; //TODO: переделать выбор изображения через BLOC
   final String curWeather;
   final String descWeather;
   final String icon;
