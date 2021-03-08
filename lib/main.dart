@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather/LoadingPage/loading_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoadingPage(),
+      home: Text('new branch'),
     );
   }
 }
