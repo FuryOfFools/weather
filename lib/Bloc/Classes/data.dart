@@ -25,10 +25,10 @@ class WeatherData {
     this.weatherInfo = album.weather[0].main;
     this.weatherDiscription = album.weather[0].description;
     this.weatherIcon = Resources.weatherPng[album.weather[0].icon];
-    this.temperature = album.main.temp;
-    this.feelTemperature = album.main.feelsLike;
-    this.minTemperature = album.main.tempMin;
-    this.maxTemperature = album.main.tempMax;
+    this.temperature = album.main.temp.toInt();
+    this.feelTemperature = album.main.feelsLike.toInt();
+    this.minTemperature = album.main.tempMin.toInt();
+    this.maxTemperature = album.main.tempMax.toInt();
     this.pressure = album.main.pressure;
     this.humidity = album.main.humidity;
     this.visibility = album.visibility;

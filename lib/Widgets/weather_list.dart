@@ -12,20 +12,19 @@ class WeatherDisplayList extends StatelessWidget {
     return Container(
       child: ListView.builder(
         scrollDirection: Axis.vertical,
-        itemCount: data.list.length, //albums.album5days.list.length,
+        itemCount: data.list.length,
         itemBuilder: (context, int index) {
           if (index == 0)
             return Column(
               children: [
                 CurrentWeather(),
-                TimeWeather(),
+                TimeWeather(index: index),
               ],
             );
           else
             return Column(
               children: [
-                //CurWeather(album: albums.album),
-                TimeWeather(),
+                TimeWeather(index: index),
               ],
             );
         },

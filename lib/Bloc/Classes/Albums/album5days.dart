@@ -8,7 +8,7 @@ class Album5Days {
   List<List1> list;
 
   ///city
-  //City city;
+  City city;
 
   Album5Days({this.list});
 
@@ -22,7 +22,7 @@ class Album5Days {
         list.add(new List1.fromJson(v));
       });
     }
-    //city = json['city'] != null ? new City.fromJson(json['city']) : null;
+    city = json['city'] != null ? new City.fromJson(json['city']) : null;
   }
 }
 
