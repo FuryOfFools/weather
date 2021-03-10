@@ -65,7 +65,6 @@ Future<Album5Days> fetchAlbum5WithCoords(
 }
 
 Future<Album5Days> fetchAlbum5WithCity(String api, String location) async {
-  //TODO: сделать обработку
   final response = await http.get(Uri.https(
       'api.openweathermap.org',
       '/data/2.5/forecast',

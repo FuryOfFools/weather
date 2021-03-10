@@ -16,7 +16,7 @@ class WeatherLocationUpdatingState extends WeatherState {}
 
 /// Ожидание получения погоды
 class WeatherUpdatingState extends WeatherState {
-  final Location location; // TODO: поменять
+  final Location location;
   WeatherUpdatingState(this.location) : assert(location != null);
 
   @override
@@ -25,10 +25,9 @@ class WeatherUpdatingState extends WeatherState {
 
 /// Отображение погоды
 class WeatherDisplayState extends WeatherState {
-  final Albums albums;
-  final Location location;
-  WeatherDisplayState(this.albums, this.location) : assert(location != null);
+  final WeatherData data;
+  WeatherDisplayState(this.data) : assert(data != null);
 
   @override
-  List<Object> get props => [albums, location];
+  List<Object> get props => [data];
 }

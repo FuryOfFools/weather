@@ -38,5 +38,7 @@ Stream<WeatherState> mapWeatherEventToState(WeatherRequestEvent event) async* {
       city: albums.album.name,
       lat: event.location.lat,
       lon: event.location.lon);
-  yield WeatherDisplayState(albums, location);
+  var data = WeatherData(
+      album: albums.album, album5days: albums.album5days, location: location);
+  yield WeatherDisplayState(data);
 }
