@@ -8,8 +8,8 @@ class WeatherData {
   String weatherInfo, weatherDiscription, weatherIcon, countryCode, cityTitle;
   num temperature,
       feelTemperature,
-      minTemperature,
-      maxTemperature,
+      // minTemperature,
+      // maxTemperature,
       pressure,
       humidity,
       visibility,
@@ -27,8 +27,8 @@ class WeatherData {
     this.weatherIcon = Resources.weatherPng[album.weather[0].icon];
     this.temperature = album.main.temp.toInt();
     this.feelTemperature = album.main.feelsLike.toInt();
-    this.minTemperature = album.main.tempMin.toInt();
-    this.maxTemperature = album.main.tempMax.toInt();
+    // this.minTemperature = album.main.tempMin.toInt();
+    // this.maxTemperature = album.main.tempMax.toInt();
     this.pressure = album.main.pressure;
     this.humidity = album.main.humidity;
     this.visibility = album.visibility;

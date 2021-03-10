@@ -9,30 +9,11 @@ class Temperature extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '${data.minTemperature} C > ',
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.grey[700],
-                ),
-              ),
-              Text(
-                '${data.temperature} C',
-                style: TextStyle(
-                  fontSize: 50,
-                ),
-              ),
-              Text(
-                ' < ${data.maxTemperature} C',
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.grey[700],
-                ),
-              ),
-            ],
+          Text(
+            '${data.temperature} C',
+            style: TextStyle(
+              fontSize: 50,
+            ),
           ),
           Text(
             'Feel like ${data.feelTemperature} C',

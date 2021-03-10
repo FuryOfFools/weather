@@ -124,10 +124,10 @@ class Main {
   num feelsLike;
 
   /// Minimum temperature at the moment. This is minimal currently observed temperature (within large megalopolises and urban areas). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
-  num tempMin;
+  //num tempMin;
 
   /// Maximum temperature at the moment. This is maximal currently observed temperature (within large megalopolises and urban areas). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
-  num tempMax;
+  //num tempMax;
 
   /// Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa
   num pressure;
@@ -138,16 +138,16 @@ class Main {
   Main(
       {this.temp,
       this.feelsLike,
-      this.tempMin,
-      this.tempMax,
+      //this.tempMin,
+      //this.tempMax,
       this.pressure,
       this.humidity});
 
   Main.fromJson(Map<String, dynamic> json) {
     temp = json['temp'];
     feelsLike = json['feels_like'];
-    tempMin = json['temp_min'];
-    tempMax = json['temp_max'];
+    // tempMin = json['temp_min'];
+    // tempMax = json['temp_max'];
     pressure = json['pressure'];
     humidity = json['humidity'];
   }

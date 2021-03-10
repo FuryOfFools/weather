@@ -26,11 +26,11 @@ class WeatherUpdatinState extends WeatherState {
 /// Ожидание получения погоды
 class WeatherRequestingState extends WeatherState {
   final String display = 'Получение данных с API...';
-  final Location location;
-  WeatherRequestingState(this.location) : assert(location != null);
+  final Location data;
+  WeatherRequestingState(this.data) : assert(data != null);
 
   @override
-  List<Object> get props => [location];
+  List<Object> get props => [data];
 }
 
 /// Отображение погоды
@@ -48,6 +48,13 @@ class OpenTimeWeatherState extends WeatherState {
   final String display = 'Открыт экран с погодой на конкретное время';
   final WeatherList data;
   OpenTimeWeatherState(this.data) : assert(data != null);
+  @override
+  List<Object> get props => [data];
+}
+
+class SearchState extends WeatherState {
+  final String data;
+  SearchState(this.data) : assert(data != null);
   @override
   List<Object> get props => [data];
 }

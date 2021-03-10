@@ -23,7 +23,7 @@ class _WeatherBlocBuilderState extends State<WeatherBlocBuilder> {
           if (state is WeatherUpdatinState) return LoadingPage();
           if (state is WeatherRequestingState) {
             BlocProvider.of<WeatherBloc>(context)
-                .add(WeatherRequestEvent(state.location));
+                .add(WeatherRequestEvent(state.data));
             return LoadingPage();
           }
           if (state is WeatherDisplayState) {
@@ -31,6 +31,9 @@ class _WeatherBlocBuilderState extends State<WeatherBlocBuilder> {
           }
           if (state is OpenTimeWeatherState) {
             return TimeWeatherPage();
+          }
+          if (state is SearchState) {
+            return SearchPage();
           } else
             return Text('Ошибка'); // TODO: экран обработки ошибок
         }

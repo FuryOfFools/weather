@@ -29,3 +29,10 @@ class OpenTimeWeatherEvent extends WeatherEvent {
   @override
   List<Object> get props => [data];
 }
+
+class SearchEvent extends WeatherEvent {
+  final String cityTitle;
+  SearchEvent(this.cityTitle) : assert(cityTitle != null);
+  @override
+  List<Object> get props => [cityTitle];
+}

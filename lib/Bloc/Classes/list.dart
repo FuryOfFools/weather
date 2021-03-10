@@ -6,8 +6,8 @@ class WeatherList {
   String weatherInfo, weatherDiscription, weatherIcon, cityTitle;
   num temperature,
       feelTemperature,
-      minTemperature,
-      maxTemperature,
+      // minTemperature,
+      // maxTemperature,
       pressure,
       humidity,
       cloudiness,
@@ -22,8 +22,8 @@ class WeatherList {
     this.cityTitle = city;
     this.temperature = album.main.temp.toInt();
     this.feelTemperature = album.main.feelsLike.toInt();
-    this.minTemperature = album.main.tempMin.toInt();
-    this.maxTemperature = album.main.tempMax.toInt();
+    // this.minTemperature = album.main.tempMin.toInt();
+    // this.maxTemperature = album.main.tempMax.toInt();
     this.pressure = album.main.pressure;
     this.humidity = album.main.humidity;
     this.cloudiness = album.clouds.all;
