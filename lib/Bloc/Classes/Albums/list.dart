@@ -1,4 +1,5 @@
 import 'package:weather/Bloc/Classes/Albums/album5days.dart';
+import 'package:weather/Bloc/Classes/resources.dart';
 
 class WeatherList {
   String weatherInfo, weatherDiscription, weatherIcon, dayOrNight;
@@ -18,7 +19,7 @@ class WeatherList {
   WeatherList(List1 album) {
     this.weatherInfo = album.weather[0].main;
     this.weatherDiscription = album.weather[0].description;
-    this.weatherIcon = album.weather[0].icon;
+    this.weatherIcon = Resources.weatherPng[album.weather[0].icon];
     this.dayOrNight = album.sys.pod;
     this.temperature = album.main.temp;
     this.feelTemperature = album.main.feelsLike;

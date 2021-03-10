@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/Bloc/blocs.dart';
-import 'package:weather/Widgets/pages.dart';
+import 'package:weather/Widgets/Pages/pages.dart';
 
 class WeatherBlocBuilder extends StatefulWidget {
   @override
@@ -17,17 +17,16 @@ class _WeatherBlocBuilderState extends State<WeatherBlocBuilder> {
           if (state is WeatherInitState) {
             BlocProvider.of<WeatherBloc>(context)
                 .add(WeatherLocationEvent(null));
-            return LoadingPage(display: 'Загрузка приложения...');
+            return LoadingPage();
           }
-          if (state is WeatherLocationUpdatingState)
-            return LoadingPage(display: 'Получение геолокации...');
+          if (state is WeatherLocationUpdatingState) return LoadingPage();
           if (state is WeatherUpdatingState) {
             BlocProvider.of<WeatherBloc>(context)
                 .add(WeatherRequestEvent(state.location));
-            return LoadingPage(display: 'Получение данных с API...');
+            return LoadingPage();
           }
           if (state is WeatherDisplayState) {
-            return DisplayPage(data: state.data);
+            return DisplayPage();
           } else
             return Text('Ошибка'); // TODO: экран обработки ошибок
         }

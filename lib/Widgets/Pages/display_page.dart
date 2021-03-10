@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/Bloc/Classes/classes.dart';
+import 'package:weather/Bloc/blocs.dart';
+import '../weather_list.dart';
 
 class DisplayPage extends StatelessWidget {
-  final WeatherData data;
-  const DisplayPage({Key key, this.data}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    final WeatherData data = BlocProvider.of<WeatherBloc>(context).state.data;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Weather'),
+          title: Text('${data.cityTitle}'),
         ),
+        body: WeatherDisplayList(),
       ),
     );
   }

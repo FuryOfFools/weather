@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/Bloc/blocs.dart';
 
 class LoadingPage extends StatelessWidget {
-  final String display;
-  const LoadingPage({Key key, this.display}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -12,7 +11,7 @@ class LoadingPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(display),
+              Text(BlocProvider.of<WeatherBloc>(context).state.display),
               CircularProgressIndicator(),
             ],
           ),

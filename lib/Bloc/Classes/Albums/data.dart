@@ -1,7 +1,8 @@
-import 'package:weather/Bloc/Classes/Albums/weather_list.dart';
+import 'package:weather/Bloc/Classes/Albums/list.dart';
 import 'package:weather/Bloc/Classes/Albums/album.dart';
 import 'package:weather/Bloc/Classes/Albums/album5days.dart';
 import 'package:weather/Bloc/Classes/location.dart';
+import 'package:weather/Bloc/Classes/resources.dart';
 
 class WeatherData {
   String weatherInfo, weatherDiscription, weatherIcon, countryCode, cityTitle;
@@ -23,7 +24,7 @@ class WeatherData {
   WeatherData({Album album, Location location, Album5Days album5days}) {
     this.weatherInfo = album.weather[0].main;
     this.weatherDiscription = album.weather[0].description;
-    this.weatherIcon = album.weather[0].icon;
+    this.weatherIcon = Resources.weatherPng[album.weather[0].icon];
     this.temperature = album.main.temp;
     this.feelTemperature = album.main.feelsLike;
     this.minTemperature = album.main.tempMin;
