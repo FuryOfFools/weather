@@ -38,7 +38,7 @@ class List1 {
   num visibility;
 
   /// Probability of precipitation
-  num pop;
+  //num pop;
   Sys sys;
 
   /// Time of data forecasted, ISO, UTC
@@ -52,7 +52,7 @@ class List1 {
     this.clouds,
     this.wind,
     this.visibility,
-    this.pop,
+    //this.pop,
     this.sys,
     //this.dtTxt,
     //this.rain
@@ -71,7 +71,7 @@ class List1 {
         json['clouds'] != null ? new Clouds.fromJson(json['clouds']) : null;
     wind = json['wind'] != null ? new Wind.fromJson(json['wind']) : null;
     visibility = json['visibility'];
-    pop = json['pop'];
+    //pop = json['pop'];
     sys = json['sys'] != null ? new Sys.fromJson(json['sys']) : null;
     //dtTxt = json['dt_txt'];
     //rain = json['rain'] != null ? new Rain.fromJson(json['rain']) : null;

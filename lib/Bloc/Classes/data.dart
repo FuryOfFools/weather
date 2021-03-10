@@ -35,16 +35,17 @@ class WeatherData {
     this.windSpeed = album.wind.speed;
     this.windDeg = album.wind.deg;
     this.cloudiness = album.clouds.all;
-    this.dateTime = DateTime.fromMicrosecondsSinceEpoch(album.dt);
+    this.dateTime = DateTime.fromMicrosecondsSinceEpoch(album.dt * 1000);
     this.countryCode = album.sys.country;
-    this.sunrise = DateTime.fromMicrosecondsSinceEpoch(album.sys.sunrise);
-    this.sunset = DateTime.fromMicrosecondsSinceEpoch(album.sys.sunset);
+    this.sunrise =
+        DateTime.fromMicrosecondsSinceEpoch(album.sys.sunrise * 1000);
+    this.sunset = DateTime.fromMicrosecondsSinceEpoch(album.sys.sunset * 1000);
     this.timezone = album.timezone;
     this.cityId = album.id;
     this.cityTitle = album.name;
     // Current Weather
     album5days.list.forEach((element) {
-      list.add(WeatherList(element));
+      this.list.add(WeatherList(element, cityTitle));
     });
   }
 }

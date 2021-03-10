@@ -21,3 +21,11 @@ class WeatherLocationEvent extends WeatherEvent {
   @override
   List<Object> get props => [location];
 }
+
+/// Пользователь открыл погоду на конкретный день
+class OpenTimeWeatherEvent extends WeatherEvent {
+  final WeatherList data;
+  OpenTimeWeatherEvent(this.data) : assert(data != null);
+  @override
+  List<Object> get props => [data];
+}

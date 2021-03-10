@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather/Bloc/Classes/classes.dart';
 import 'package:weather/Bloc/blocs.dart';
 
 class AdditionalInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final WeatherData data = BlocProvider.of<WeatherBloc>(context).state.data;
+    final data = BlocProvider.of<WeatherBloc>(context).state.data;
     return Container(
         width: double.infinity,
         color: Colors.grey[300],

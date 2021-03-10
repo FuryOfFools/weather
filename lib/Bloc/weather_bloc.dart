@@ -12,7 +12,10 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       yield* _mapLocationEventToState(event);
     }
     if (event is WeatherRequestEvent) {
-      yield* mapWeatherEventToState(event);
+      yield* _mapWeatherEventToState(event);
+    }
+    if (event is OpenTimeWeatherEvent) {
+      yield OpenTimeWeatherState(event.data);
     }
   }
 }
@@ -20,16 +23,17 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 Stream<WeatherState> _mapLocationEventToState(
     WeatherLocationEvent event) async* {
   if (event.location != null)
-    yield WeatherUpdatingState(event.location);
+    yield WeatherRequestingState(event.location);
   else {
-    yield WeatherLocationUpdatingState();
+    yield LocationUpdatingState();
     Location location = Location();
     await location.getLocation();
-    yield WeatherUpdatingState(location);
+    yield WeatherRequestingState(location);
   }
 }
 
-Stream<WeatherState> mapWeatherEventToState(WeatherRequestEvent event) async* {
+Stream<WeatherState> _mapWeatherEventToState(WeatherRequestEvent event) async* {
+  yield WeatherUpdatinState();
   Albums albums = Albums();
   String api =
       '98a3681fb714bcff7aa402873d3642d6'; //TODO: переместить куда-нибудь
