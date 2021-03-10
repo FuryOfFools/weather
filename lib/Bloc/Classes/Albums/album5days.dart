@@ -1,49 +1,62 @@
 class Album5Days {
-  String cod;
-  num message;
-  num cnt;
-  List<List1> list;
-  City city;
+  //String cod;
+  //num message;
+  /// A number of timestamps returned in the API response
+  //num cnt;
 
-  Album5Days({this.cod, this.message, this.cnt, this.list, this.city});
+  /// List of Weather
+  List<List1> list;
+
+  ///city
+  //City city;
+
+  Album5Days({this.list});
 
   Album5Days.fromJson(Map<String, dynamic> json) {
-    cod = json['cod'];
-    message = json['message'];
-    cnt = json['cnt'];
+    // cod = json['cod'];
+    // message = json['message'];
+    //cnt = json['cnt'];
     if (json['list'] != null) {
       list = new List<List1>();
       json['list'].forEach((v) {
         list.add(new List1.fromJson(v));
       });
     }
-    city = json['city'] != null ? new City.fromJson(json['city']) : null;
+    //city = json['city'] != null ? new City.fromJson(json['city']) : null;
   }
 }
 
 class List1 {
+  /// Time of data forecasted, unix, UTC
   num dt;
   Main main;
   List<Weather> weather;
   Clouds clouds;
   Wind wind;
+
+  /// Average visibility, metres
   num visibility;
+
+  /// Probability of precipitation
   num pop;
   Sys sys;
-  String dtTxt;
-  Rain rain;
 
-  List1(
-      {this.dt,
-      this.main,
-      this.weather,
-      this.clouds,
-      this.wind,
-      this.visibility,
-      this.pop,
-      this.sys,
-      this.dtTxt,
-      this.rain});
+  /// Time of data forecasted, ISO, UTC
+  //String dtTxt;
+  //Rain rain;
+
+  List1({
+    this.dt,
+    this.main,
+    this.weather,
+    this.clouds,
+    this.wind,
+    this.visibility,
+    this.pop,
+    this.sys,
+    //this.dtTxt,
+    //this.rain
+  });
 
   List1.fromJson(Map<String, dynamic> json) {
     dt = json['dt'];
@@ -60,8 +73,8 @@ class List1 {
     visibility = json['visibility'];
     pop = json['pop'];
     sys = json['sys'] != null ? new Sys.fromJson(json['sys']) : null;
-    dtTxt = json['dt_txt'];
-    rain = json['rain'] != null ? new Rain.fromJson(json['rain']) : null;
+    //dtTxt = json['dt_txt'];
+    //rain = json['rain'] != null ? new Rain.fromJson(json['rain']) : null;
   }
 }
 
@@ -71,21 +84,22 @@ class Main {
   num tempMin;
   num tempMax;
   num pressure;
-  num seaLevel;
-  num grndLevel;
+  //num seaLevel;
+  //num grndLevel;
   num humidity;
-  num tempKf;
+  //num tempKf;
 
-  Main(
-      {this.temp,
-      this.feelsLike,
-      this.tempMin,
-      this.tempMax,
-      this.pressure,
-      this.seaLevel,
-      this.grndLevel,
-      this.humidity,
-      this.tempKf});
+  Main({
+    this.temp,
+    this.feelsLike,
+    this.tempMin,
+    this.tempMax,
+    this.pressure,
+    //this.seaLevel,
+    //this.grndLevel,
+    this.humidity,
+    //this.tempKf
+  });
 
   Main.fromJson(Map<String, dynamic> json) {
     temp = json['temp'];
@@ -93,23 +107,23 @@ class Main {
     tempMin = json['temp_min'];
     tempMax = json['temp_max'];
     pressure = json['pressure'];
-    seaLevel = json['sea_level'];
-    grndLevel = json['grnd_level'];
+    //seaLevel = json['sea_level'];
+    //grndLevel = json['grnd_level'];
     humidity = json['humidity'];
-    tempKf = json['temp_kf'];
+    //tempKf = json['temp_kf'];
   }
 }
 
 class Weather {
-  num id;
+  // num id;
   String main;
   String description;
   String icon;
 
-  Weather({this.id, this.main, this.description, this.icon});
+  Weather({this.main, this.description, this.icon});
 
   Weather.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    // id = json['id'];
     main = json['main'];
     description = json['description'];
     icon = json['icon'];
@@ -148,15 +162,15 @@ class Sys {
   }
 }
 
-class Rain {
-  num d3h;
+// class Rain {
+//   num d3h;
 
-  Rain({this.d3h});
+//   Rain({this.d3h});
 
-  Rain.fromJson(Map<String, dynamic> json) {
-    d3h = json['3h'];
-  }
-}
+//   Rain.fromJson(Map<String, dynamic> json) {
+//     d3h = json['3h'];
+//   }
+// }
 
 class City {
   num id;

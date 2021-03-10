@@ -6,7 +6,7 @@ class Album {
   List<Weather> weather;
 
   /// Internal parameter
-  String base;
+  //String base;
 
   /// temperature, pressure, humidity
   Main main;
@@ -36,22 +36,23 @@ class Album {
   String name;
 
   /// Internal parameter
-  num cod;
+  //num cod;
 
-  Album(
-      {this.coord,
-      this.weather,
-      this.base,
-      this.main,
-      this.visibility,
-      this.wind,
-      this.clouds,
-      this.dt,
-      this.sys,
-      this.timezone,
-      this.id,
-      this.name,
-      this.cod});
+  Album({
+    this.coord,
+    this.weather,
+    //this.base,
+    this.main,
+    this.visibility,
+    this.wind,
+    this.clouds,
+    this.dt,
+    this.sys,
+    this.timezone,
+    this.id,
+    this.name,
+    //this.cod
+  });
 
   Album.fromJson(Map<String, dynamic> json) {
     coord = json['coord'] != null ? new Coord.fromJson(json['coord']) : null;
@@ -61,7 +62,7 @@ class Album {
         weather.add(new Weather.fromJson(v));
       });
     }
-    base = json['base'];
+    //base = json['base'];
     main = json['main'] != null ? new Main.fromJson(json['main']) : null;
     visibility = json['visibility'];
     wind = json['wind'] != null ? new Wind.fromJson(json['wind']) : null;
@@ -72,7 +73,7 @@ class Album {
     timezone = json['timezone'];
     id = json['id'];
     name = json['name'];
-    cod = json['cod'];
+    //cod = json['cod'];
   }
 }
 
@@ -94,7 +95,7 @@ class Coord {
 /// Weather
 class Weather {
   /// Weather condition id
-  num id;
+  //num id;
 
   /// Group of weather parameters (Rain, Snow, Extreme etc.)
   String main;
@@ -105,10 +106,10 @@ class Weather {
   /// Weather icon id
   String icon;
 
-  Weather({this.id, this.main, this.description, this.icon});
+  Weather({this.main, this.description, this.icon});
 
   Weather.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    //id = json['id'];
     main = json['main'];
     description = json['description'];
     icon = json['icon'];
@@ -180,10 +181,10 @@ class Clouds {
 
 class Sys {
   /// Internal parameter
-  num type;
+  //num type;
 
   /// Internal parameter
-  num id;
+  //num id;
 
   /// Country code
   String country;
@@ -194,11 +195,11 @@ class Sys {
   /// Sunset time, unix, UTC
   num sunset;
 
-  Sys({this.type, this.id, this.country, this.sunrise, this.sunset});
+  Sys({this.country, this.sunrise, this.sunset});
 
   Sys.fromJson(Map<String, dynamic> json) {
-    type = json['type'];
-    id = json['id'];
+    //type = json['type'];
+    //id = json['id'];
     country = json['country'];
     sunrise = json['sunrise'];
     sunset = json['sunset'];

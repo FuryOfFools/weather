@@ -1,23 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:weather/Classes/album.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/Bloc/Classes/classes.dart';
+import 'package:weather/Bloc/blocs.dart';
 
 class AdditionalInfo extends StatelessWidget {
-  final Wind wind;
-  final num humidity;
-  final num pressure;
-  final num visibility;
-  final Clouds clouds;
-
-  const AdditionalInfo({
-    Key key,
-    this.wind,
-    this.humidity,
-    this.pressure,
-    this.visibility,
-    this.clouds,
-  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final WeatherData data = BlocProvider.of<WeatherBloc>(context).state.data;
     return Container(
         width: double.infinity,
         color: Colors.grey[300],
@@ -31,14 +20,14 @@ class AdditionalInfo extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'Wind: ${wind.speed} m/s',
+                      'Wind: ${data.windSpeed} m/s',
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.grey[800],
                       ),
                     ),
                     Transform.rotate(
-                      angle: wind.deg.toDouble(),
+                      angle: data.windDeg.toDouble(),
                       child: Icon(
                         Icons.arrow_back,
                         size: 12,
@@ -47,14 +36,14 @@ class AdditionalInfo extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  'Humidity: $humidity%',
+                  'Humidity: ${data.humidity}%',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey[800],
                   ),
                 ),
                 Text(
-                  'Pressure: $pressure hPa',
+                  'Pressure: ${data.pressure} hPa',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey[800],
@@ -66,14 +55,14 @@ class AdditionalInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  'Visibility: $visibility m',
+                  'Visibility: ${data.visibility} m',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey[800],
                   ),
                 ),
                 Text(
-                  'Cloudiness: ${clouds.all}%',
+                  'Cloudiness: ${data.cloudiness}%',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey[800],
