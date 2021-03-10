@@ -1,4 +1,4 @@
-import 'package:weather/Bloc/Classes/Albums/list.dart';
+import 'package:weather/Bloc/Classes/list.dart';
 import 'package:weather/Bloc/Classes/Albums/album.dart';
 import 'package:weather/Bloc/Classes/Albums/album5days.dart';
 import 'package:weather/Bloc/Classes/location.dart';
