@@ -14,8 +14,9 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     if (event is WeatherRequestEvent) {
       yield* _mapWeatherEventToState(event);
     }
+    if (event is DisplayEvent) yield WeatherDisplayState(event.data);
     if (event is OpenTimeWeatherEvent) {
-      yield OpenTimeWeatherState(event.data);
+      yield OpenTimeWeatherState(data: event.data, list: event.list);
     }
     if (event is SearchEvent) {
       yield SearchState(event.cityTitle);

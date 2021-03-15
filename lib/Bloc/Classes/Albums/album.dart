@@ -36,23 +36,22 @@ class Album {
   String name;
 
   /// Internal parameter
-  //num cod;
+  num cod;
 
-  Album({
-    this.coord,
-    this.weather,
-    //this.base,
-    this.main,
-    this.visibility,
-    this.wind,
-    this.clouds,
-    this.dt,
-    this.sys,
-    this.timezone,
-    this.id,
-    this.name,
-    //this.cod
-  });
+  Album(
+      {this.coord,
+      this.weather,
+      //this.base,
+      this.main,
+      this.visibility,
+      this.wind,
+      this.clouds,
+      this.dt,
+      this.sys,
+      this.timezone,
+      this.id,
+      this.name,
+      this.cod});
 
   Album.fromJson(Map<String, dynamic> json) {
     coord = json['coord'] != null ? new Coord.fromJson(json['coord']) : null;
@@ -73,7 +72,7 @@ class Album {
     timezone = json['timezone'];
     id = json['id'];
     name = json['name'];
-    //cod = json['cod'];
+    cod = json['cod'];
   }
 }
 

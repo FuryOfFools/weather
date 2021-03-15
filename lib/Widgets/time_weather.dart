@@ -18,7 +18,7 @@ class TimeWeather extends StatelessWidget {
     return FlatButton(
       onPressed: () {
         BlocProvider.of<WeatherBloc>(context)
-            .add(OpenTimeWeatherEvent(data.list[index]));
+            .add(OpenTimeWeatherEvent(data: data, list: data.list[index]));
       },
       child: Container(
         width: double.infinity,

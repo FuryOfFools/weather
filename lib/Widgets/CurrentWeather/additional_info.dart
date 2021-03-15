@@ -5,7 +5,12 @@ import 'package:weather/Bloc/blocs.dart';
 class AdditionalInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final data = BlocProvider.of<WeatherBloc>(context).state.data;
+    final state = BlocProvider.of<WeatherBloc>(context).state;
+    var data;
+    if (state.list == null)
+      data = state.data;
+    else
+      data = state.list;
     return Container(
         width: double.infinity,
         color: Colors.grey[300],

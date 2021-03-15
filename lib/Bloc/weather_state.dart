@@ -4,6 +4,7 @@ import 'package:weather/Bloc/Classes/classes.dart';
 class WeatherState extends Equatable {
   final String display = '';
   final data = null;
+  final list = null;
   @override
   List<Object> get props => [];
 }
@@ -46,10 +47,12 @@ class WeatherDisplayState extends WeatherState {
 /// Отображаем экран с текущей погодой
 class OpenTimeWeatherState extends WeatherState {
   final String display = 'Открыт экран с погодой на конкретное время';
-  final WeatherList data;
-  OpenTimeWeatherState(this.data) : assert(data != null);
+  final WeatherList list;
+  final WeatherData data;
+  OpenTimeWeatherState({this.data, this.list})
+      : assert(data != null && list != null);
   @override
-  List<Object> get props => [data];
+  List<Object> get props => [data, list];
 }
 
 class SearchState extends WeatherState {

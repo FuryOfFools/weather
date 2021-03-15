@@ -24,15 +24,26 @@ class WeatherLocationEvent extends WeatherEvent {
 
 /// Пользователь открыл погоду на конкретный день
 class OpenTimeWeatherEvent extends WeatherEvent {
-  final WeatherList data;
-  OpenTimeWeatherEvent(this.data) : assert(data != null);
+  final WeatherData data;
+  final WeatherList list;
+  OpenTimeWeatherEvent({this.list, this.data})
+      : assert(list != null && data != null);
   @override
-  List<Object> get props => [data];
+  List<Object> get props => [list, data];
 }
 
+/// Пользователь открыл поиск города
 class SearchEvent extends WeatherEvent {
   final String cityTitle;
   SearchEvent(this.cityTitle) : assert(cityTitle != null);
   @override
   List<Object> get props => [cityTitle];
+}
+
+/// Переотрисовочка
+class DisplayEvent extends WeatherEvent {
+  final WeatherData data;
+  DisplayEvent(this.data) : assert(data != null);
+  @override
+  List<Object> get props => [data];
 }
