@@ -7,10 +7,10 @@ class Weather extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = BlocProvider.of<WeatherBloc>(context).state;
     var data;
-    if (state.list == null)
+    if (state.additionalData == null)
       data = state.data;
     else
-      data = state.list;
+      data = state.additionalData;
     return Container(
       margin: EdgeInsets.all(20),
       child: Column(
@@ -19,8 +19,8 @@ class Weather extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image(
-                width: 60,
-                height: 50,
+                width: 40,
+                height: 40,
                 image: AssetImage(data.weatherIcon),
               ),
               Text(
@@ -32,12 +32,25 @@ class Weather extends StatelessWidget {
               ),
             ],
           ),
-          Text(
-            data.weatherDiscription,
-            style: TextStyle(
-              fontSize: 13,
-              color: Colors.grey[700],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Description: ',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.grey[700],
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                '${data.weatherDescription}',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.grey[700],
+                ),
+              ),
+            ],
           ),
         ],
       ),

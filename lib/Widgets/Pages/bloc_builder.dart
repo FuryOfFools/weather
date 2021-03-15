@@ -15,8 +15,7 @@ class _WeatherBlocBuilderState extends State<WeatherBlocBuilder> {
       builder: (context, state) {
         {
           if (state is WeatherInitState) {
-            BlocProvider.of<WeatherBloc>(context)
-                .add(WeatherLocationEvent(null));
+            BlocProvider.of<WeatherBloc>(context).add(LocationEvent(null));
             return LoadingPage();
           }
           if (state is LocationUpdatingState) return LoadingPage();

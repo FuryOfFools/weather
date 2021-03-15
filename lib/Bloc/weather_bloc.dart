@@ -8,7 +8,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
   @override
   Stream<WeatherState> mapEventToState(WeatherEvent event) async* {
-    if (event is WeatherLocationEvent) {
+    if (event is LocationEvent) {
       yield* _mapLocationEventToState(event);
     }
     if (event is WeatherRequestEvent) {
@@ -16,16 +16,15 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     }
     if (event is DisplayEvent) yield WeatherDisplayState(event.data);
     if (event is OpenTimeWeatherEvent) {
-      yield OpenTimeWeatherState(data: event.data, list: event.list);
+      yield OpenTimeWeatherState(data: event.data, additionalData: event.list);
     }
     if (event is SearchEvent) {
-      yield SearchState(event.cityTitle);
+      yield SearchState(event.data);
     }
   }
 }
 
-Stream<WeatherState> _mapLocationEventToState(
-    WeatherLocationEvent event) async* {
+Stream<WeatherState> _mapLocationEventToState(LocationEvent event) async* {
   if (event.location != null)
     yield WeatherRequestingState(event.location);
   else {

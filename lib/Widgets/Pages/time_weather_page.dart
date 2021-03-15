@@ -7,13 +7,12 @@ class TimeWeatherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = BlocProvider.of<WeatherBloc>(context).state;
-    var list = state.list;
+    var list = state.additionalData;
     var time = list.dateTime;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-              '${list.cityTitle} (${time.month}.${time.day} ${time.hour}:00)'),
+          title: Text('${list.cityTitle}'),
           leading: IconButton(
             onPressed: () {
               BlocProvider.of<WeatherBloc>(context)
@@ -28,6 +27,21 @@ class TimeWeatherPage extends StatelessWidget {
         ),
         body: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    ' ${time.month}.${time.day}.${time.year} (${time.hour}:00)',
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                ),
+              ],
+            ),
             CurrentWeather(),
           ],
         ),

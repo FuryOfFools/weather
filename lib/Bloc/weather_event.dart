@@ -15,9 +15,9 @@ class WeatherRequestEvent extends WeatherEvent {
 }
 
 /// Событие запроса геолокации
-class WeatherLocationEvent extends WeatherEvent {
+class LocationEvent extends WeatherEvent {
   final Location location;
-  WeatherLocationEvent(this.location);
+  LocationEvent(this.location);
   @override
   List<Object> get props => [location];
 }
@@ -34,10 +34,10 @@ class OpenTimeWeatherEvent extends WeatherEvent {
 
 /// Пользователь открыл поиск города
 class SearchEvent extends WeatherEvent {
-  final String cityTitle;
-  SearchEvent(this.cityTitle) : assert(cityTitle != null);
+  final data;
+  SearchEvent(this.data);
   @override
-  List<Object> get props => [cityTitle];
+  List<Object> get props => [data];
 }
 
 /// Переотрисовочка

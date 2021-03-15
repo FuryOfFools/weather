@@ -7,21 +7,21 @@ class Temperature extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = BlocProvider.of<WeatherBloc>(context).state;
     var data;
-    if (state.list == null)
+    if (state.additionalData == null)
       data = state.data;
     else
-      data = state.list;
+      data = state.additionalData;
     return Container(
       child: Column(
         children: [
           Text(
-            '${data.temperature} C',
+            '${data.temperature} C°',
             style: TextStyle(
               fontSize: 50,
             ),
           ),
           Text(
-            'Feel like ${data.feelTemperature} C',
+            'Feel like ${data.feelTemperature} C°',
             style: TextStyle(
               fontSize: 13,
               color: Colors.grey[700],

@@ -4,29 +4,29 @@ import 'package:weather/Bloc/Classes/classes.dart';
 class WeatherState extends Equatable {
   final String display = '';
   final data = null;
-  final list = null;
+  final additionalData = null;
   @override
   List<Object> get props => [];
 }
 
 /// Начальное состояние
 class WeatherInitState extends WeatherState {
-  final String display = 'Загрузка приложения...';
+  final String display = 'Application is loading...';
   WeatherInitState();
 }
 
 /// Ожидание локации
 class LocationUpdatingState extends WeatherState {
-  final String display = 'Получение геолокации...';
+  final String display = 'Getting geolocation...';
 }
 
 class WeatherUpdatinState extends WeatherState {
-  final String display = 'Получение данных с API...';
+  final String display = 'Getting data from the API...';
 }
 
 /// Ожидание получения погоды
 class WeatherRequestingState extends WeatherState {
-  final String display = 'Получение данных с API...';
+  final String display = 'Getting data from the API...';
   final Location data;
   WeatherRequestingState(this.data) : assert(data != null);
 
@@ -36,7 +36,7 @@ class WeatherRequestingState extends WeatherState {
 
 /// Отображение погоды
 class WeatherDisplayState extends WeatherState {
-  final String display = 'Данные получены';
+  final String display = 'Data received';
   final WeatherData data;
   WeatherDisplayState(this.data) : assert(data != null);
 
@@ -46,17 +46,19 @@ class WeatherDisplayState extends WeatherState {
 
 /// Отображаем экран с текущей погодой
 class OpenTimeWeatherState extends WeatherState {
-  final String display = 'Открыт экран с погодой на конкретное время';
-  final WeatherList list;
+  final String display =
+      'The screen with the weather for a specific time is open';
   final WeatherData data;
-  OpenTimeWeatherState({this.data, this.list})
-      : assert(data != null && list != null);
+  final WeatherList additionalData;
+  OpenTimeWeatherState({this.data, this.additionalData})
+      : assert(data != null && additionalData != null);
   @override
-  List<Object> get props => [data, list];
+  List<Object> get props => [data, additionalData];
 }
 
 class SearchState extends WeatherState {
-  final String data;
+  final String display = 'The city weather search screen is open';
+  final WeatherData data;
   SearchState(this.data) : assert(data != null);
   @override
   List<Object> get props => [data];

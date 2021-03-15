@@ -10,9 +10,9 @@ class TimeWeather extends StatelessWidget {
   Widget build(BuildContext context) {
     final data = BlocProvider.of<WeatherBloc>(context).state.data;
     final String date =
-            '${data.list[index].dateTime.month}.${data.list[index].dateTime.day}',
+            '${data.list[index].dateTime.month}.${data.list[index].dateTime.day}.${data.list[index].dateTime.year}',
         time = '${data.list[index].dateTime.hour}:00',
-        temp = '${data.list[index].temperature} C',
+        temp = '${data.list[index].temperature} C°',
         weather = '${data.list[index].weatherInfo}',
         icon = '${data.list[index].weatherIcon}';
     return FlatButton(
@@ -24,11 +24,27 @@ class TimeWeather extends StatelessWidget {
         width: double.infinity,
         height: 50,
         margin: EdgeInsets.all(5),
-        color: Colors.white,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey[300],
+              spreadRadius: 1,
+              blurRadius: 3,
+            ),
+          ],
+          borderRadius: BorderRadius.circular(8.0),
+          color: Colors.white,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('$date $time'),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: Text(
+                '$date ($time)',
+                style: TextStyle(color: Colors.grey[600]),
+              ),
+            ),
             Row(
               children: [
                 Container(
@@ -36,14 +52,14 @@ class TimeWeather extends StatelessWidget {
                   child: Text(temp),
                 ),
                 Container(
-                  width: 110,
+                  width: 90,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(weather),
                       Image(
-                        width: 60,
-                        height: 50,
+                        width: 40,
+                        height: 40,
                         image: AssetImage(icon),
                       ),
                     ],

@@ -3,7 +3,7 @@ import 'package:weather/Bloc/Classes/data.dart';
 import 'package:weather/Bloc/Classes/resources.dart';
 
 class WeatherList {
-  String weatherInfo, weatherDiscription, weatherIcon, cityTitle;
+  String weatherInfo, weatherDescription, weatherIcon, cityTitle;
   num temperature,
       feelTemperature,
       // minTemperature,
@@ -17,7 +17,7 @@ class WeatherList {
   DateTime dateTime;
   WeatherList(List1 album, String city) {
     this.weatherInfo = album.weather[0].main;
-    this.weatherDiscription = album.weather[0].description;
+    this.weatherDescription = album.weather[0].description;
     this.weatherIcon = Resources.weatherPng[album.weather[0].icon];
     this.cityTitle = city;
     this.temperature = album.main.temp.toInt();

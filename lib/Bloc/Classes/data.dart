@@ -5,7 +5,7 @@ import 'package:weather/Bloc/Classes/location.dart';
 import 'package:weather/Bloc/Classes/resources.dart';
 
 class WeatherData {
-  String weatherInfo, weatherDiscription, weatherIcon, countryCode, cityTitle;
+  String weatherInfo, weatherDescription, weatherIcon, countryCode, cityTitle;
   num temperature,
       feelTemperature,
       pressure,
@@ -22,7 +22,7 @@ class WeatherData {
   WeatherData({Album album, Location location, Album5Days album5days}) {
     if (album.cod != '404') {
       this.weatherInfo = album.weather[0].main;
-      this.weatherDiscription = album.weather[0].description;
+      this.weatherDescription = album.weather[0].description;
       this.weatherIcon = Resources.weatherPng[album.weather[0].icon];
       this.temperature = album.main.temp.toInt();
       this.feelTemperature = album.main.feelsLike.toInt();

@@ -7,15 +7,25 @@ class AdditionalInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = BlocProvider.of<WeatherBloc>(context).state;
     var data;
-    if (state.list == null)
+    if (state.additionalData == null)
       data = state.data;
     else
-      data = state.list;
+      data = state.additionalData;
     return Container(
         width: double.infinity,
-        color: Colors.grey[300],
         padding: EdgeInsets.all(10),
         margin: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+          color: Colors.amber[50],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey[200],
+              spreadRadius: 1,
+              blurRadius: 2,
+            ),
+          ],
+        ),
         child: Column(
           children: [
             Row(
@@ -23,8 +33,14 @@ class AdditionalInfo extends StatelessWidget {
               children: [
                 Row(
                   children: [
+                    Text('Wind: ',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey[800],
+                          fontWeight: FontWeight.bold,
+                        )),
                     Text(
-                      'Wind: ${data.windSpeed} m/s',
+                      '${data.windSpeed} m/s',
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.grey[800],
@@ -39,38 +55,86 @@ class AdditionalInfo extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text(
-                  'Humidity: ${data.humidity}%',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey[800],
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      'Humidity: ',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      '${data.humidity}%',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[800],
+                      ),
+                    ),
+                  ],
                 ),
-                Text(
-                  'Pressure: ${data.pressure} hPa',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey[800],
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      'Pressure: ',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      '${data.pressure} hPa',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[800],
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(
-                  'Visibility: ${data.visibility} m',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey[800],
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      'Visibility: ',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      '${data.visibility} m',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[800],
+                      ),
+                    ),
+                  ],
                 ),
-                Text(
-                  'Cloudiness: ${data.cloudiness}%',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey[800],
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      'Cloudiness: ',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      '${data.cloudiness}%',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[800],
+                      ),
+                    ),
+                  ],
                 ),
                 // Text(
                 //   'Sunset: WIP',

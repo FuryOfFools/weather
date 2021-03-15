@@ -11,7 +11,11 @@ class LoadingPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(BlocProvider.of<WeatherBloc>(context).state.display),
+              Container(
+                child:
+                    Text(BlocProvider.of<WeatherBloc>(context).state.display),
+                margin: EdgeInsets.all(10),
+              ),
               CircularProgressIndicator(),
             ],
           ),
