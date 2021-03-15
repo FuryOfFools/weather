@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather/Bloc/blocs.dart';
-import 'package:weather/Bloc/Classes/classes.dart';
 import 'package:weather/Bloc/weather_bloc.dart';
 
 class SearchPage extends StatelessWidget {
@@ -14,8 +12,7 @@ class SearchPage extends StatelessWidget {
           title: Text('Поиск погоды по городу'),
           leading: IconButton(
             onPressed: () {
-              BlocProvider.of<WeatherBloc>(context)
-                  .add(WeatherRequestEvent(Location(city: data)));
+              Navigator.of(context).pop();
             },
             icon: Icon(
               Icons.arrow_back,

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather/Bloc/Classes/classes.dart';
 import 'package:weather/Bloc/blocs.dart';
-import 'package:weather/Widgets/additional_info.dart';
-import 'package:weather/Widgets/temperature.dart';
-import '../weather.dart';
+import '../CurrentWeather/current_weather.dart';
 
 class TimeWeatherPage extends StatelessWidget {
   @override
@@ -18,9 +15,8 @@ class TimeWeatherPage extends StatelessWidget {
               '${data.cityTitle} (${time.month}.${time.day} ${time.hour}:00)'),
           leading: IconButton(
             onPressed: () {
-              BlocProvider.of<WeatherBloc>(context)
-                  .add(WeatherRequestEvent(Location(city: data.cityTitle)));
-            }, //TODO не забудь
+              Navigator.of(context).pop();
+            },
             icon: Icon(
               Icons.arrow_back,
               size: 25,
@@ -28,13 +24,9 @@ class TimeWeatherPage extends StatelessWidget {
             ),
           ),
         ),
-        body: Column(
-          children: [
-            Weather(),
-            Temperature(),
-            AdditionalInfo(),
-          ],
-        ),
+        body: Column(children: [
+          CurrentWeather(),
+        ]),
       ),
     );
   }
