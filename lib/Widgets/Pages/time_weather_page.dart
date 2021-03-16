@@ -16,8 +16,8 @@ class TimeWeatherPage extends StatelessWidget {
           leading: IconButton(
             onPressed: () {
               BlocProvider.of<WeatherBloc>(context)
-                  .add(DisplayEvent(state.data));
-            }, //TODO не забудь
+                  .add(DisplayEvent(data: state.data));
+            },
             icon: Icon(
               Icons.arrow_back,
               size: 25,
@@ -31,12 +31,13 @@ class TimeWeatherPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.only(top: 20),
                   child: Text(
                     ' ${time.month}.${time.day}.${time.year} (${time.hour}:00)',
                     style: TextStyle(
                       fontSize: 17,
-                      color: Colors.grey[700],
+                      // color: Color(0xffec6e4c),
+                      // fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

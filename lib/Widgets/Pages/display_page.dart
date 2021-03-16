@@ -15,17 +15,6 @@ class DisplayPage extends StatelessWidget {
         drawer: DrawerWidget(),
         appBar: AppBar(
           title: Text('${data.cityTitle}'),
-          // leading: IconButton(
-          //   icon: Icon(
-          //     Icons.search,
-          //     size: 25,
-          //     color: Colors.white,
-          //   ),
-          //   onPressed: () {
-          //     BlocProvider.of<WeatherBloc>(context)
-          //         .add(SearchEvent(data.cityTitle));
-          //   },
-          // ),
         ),
         body: Container(
           child: ListView.builder(

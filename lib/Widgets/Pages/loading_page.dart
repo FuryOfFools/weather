@@ -16,7 +16,6 @@ class LoadingPage extends StatelessWidget {
                     Text(BlocProvider.of<WeatherBloc>(context).state.display),
                 margin: EdgeInsets.all(10),
               ),
-              CircularProgressIndicator(),
             ],
           ),
         ),

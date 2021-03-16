@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:weather/Bloc/Classes/classes.dart';
+import 'Classes/classes.dart';
 
 class WeatherState extends Equatable {
   final String display = '';
@@ -20,6 +20,7 @@ class LocationUpdatingState extends WeatherState {
   final String display = 'Getting geolocation...';
 }
 
+/// Ожидание погоды
 class WeatherUpdatinState extends WeatherState {
   final String display = 'Getting data from the API...';
 }
@@ -28,7 +29,7 @@ class WeatherUpdatinState extends WeatherState {
 class WeatherRequestingState extends WeatherState {
   final String display = 'Getting data from the API...';
   final Location data;
-  WeatherRequestingState(this.data) : assert(data != null);
+  WeatherRequestingState({this.data}) : assert(data != null);
 
   @override
   List<Object> get props => [data];
@@ -38,7 +39,7 @@ class WeatherRequestingState extends WeatherState {
 class WeatherDisplayState extends WeatherState {
   final String display = 'Data received';
   final WeatherData data;
-  WeatherDisplayState(this.data) : assert(data != null);
+  WeatherDisplayState({this.data}) : assert(data != null);
 
   @override
   List<Object> get props => [data];
@@ -56,10 +57,18 @@ class OpenTimeWeatherState extends WeatherState {
   List<Object> get props => [data, additionalData];
 }
 
+/// Отображаем экран загрузки
 class SearchState extends WeatherState {
   final String display = 'The city weather search screen is open';
   final WeatherData data;
-  SearchState(this.data) : assert(data != null);
+  SearchState({this.data}) : assert(data != null);
   @override
   List<Object> get props => [data];
+}
+
+class ErrorState extends WeatherState {
+  final String display;
+  ErrorState(this.display);
+  @override
+  List<Object> get props => [display];
 }

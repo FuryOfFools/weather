@@ -6,10 +6,17 @@ class WeatherEvent extends Equatable {
   List<Object> get props => [];
 }
 
+/// Инициализация данных
+class DataLoadingEvent extends WeatherEvent {
+  DataLoadingEvent();
+  @override
+  List<Object> get props => [];
+}
+
 /// Событие запроса погоды
 class WeatherRequestEvent extends WeatherEvent {
   final Location location;
-  WeatherRequestEvent(this.location) : assert(location != null);
+  WeatherRequestEvent({this.location}) : assert(location != null);
   @override
   List<Object> get props => [location];
 }
@@ -17,7 +24,7 @@ class WeatherRequestEvent extends WeatherEvent {
 /// Событие запроса геолокации
 class LocationEvent extends WeatherEvent {
   final Location location;
-  LocationEvent(this.location);
+  LocationEvent({this.location});
   @override
   List<Object> get props => [location];
 }
@@ -35,7 +42,7 @@ class OpenTimeWeatherEvent extends WeatherEvent {
 /// Пользователь открыл поиск города
 class SearchEvent extends WeatherEvent {
   final data;
-  SearchEvent(this.data);
+  SearchEvent({this.data});
   @override
   List<Object> get props => [data];
 }
@@ -43,7 +50,7 @@ class SearchEvent extends WeatherEvent {
 /// Переотрисовочка
 class DisplayEvent extends WeatherEvent {
   final WeatherData data;
-  DisplayEvent(this.data) : assert(data != null);
+  DisplayEvent({this.data}) : assert(data != null);
   @override
   List<Object> get props => [data];
 }

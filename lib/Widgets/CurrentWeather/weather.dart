@@ -27,7 +27,7 @@ class Weather extends StatelessWidget {
                 data.weatherInfo,
                 style: TextStyle(
                   fontSize: 30,
-                  color: Colors.grey[800],
+                  color: Color(0xffec6e4c),
                 ),
               ),
             ],

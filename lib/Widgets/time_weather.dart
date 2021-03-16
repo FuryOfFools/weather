@@ -56,7 +56,12 @@ class TimeWeather extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(weather),
+                      Text(
+                        weather,
+                        style: TextStyle(
+                          color: Color(0xffec6e4c),
+                        ),
+                      ),
                       Image(
                         width: 40,
                         height: 40,

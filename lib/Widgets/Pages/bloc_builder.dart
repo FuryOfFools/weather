@@ -15,14 +15,15 @@ class _WeatherBlocBuilderState extends State<WeatherBlocBuilder> {
       builder: (context, state) {
         {
           if (state is WeatherInitState) {
-            BlocProvider.of<WeatherBloc>(context).add(LocationEvent(null));
+            BlocProvider.of<WeatherBloc>(context)
+                .add(LocationEvent(location: null));
             return LoadingPage();
           }
           if (state is LocationUpdatingState) return LoadingPage();
           if (state is WeatherUpdatinState) return LoadingPage();
           if (state is WeatherRequestingState) {
             BlocProvider.of<WeatherBloc>(context)
-                .add(WeatherRequestEvent(state.data));
+                .add(WeatherRequestEvent(location: state.data));
             return LoadingPage();
           }
           if (state is WeatherDisplayState) {
@@ -33,8 +34,13 @@ class _WeatherBlocBuilderState extends State<WeatherBlocBuilder> {
           }
           if (state is SearchState) {
             return SearchPage();
-          } else
-            return Text('Ошибка'); // TODO: экран обработки ошибок
+          }
+          if (state is ErrorState) {
+            BlocProvider.of<WeatherBloc>(context)
+                .add(LocationEvent(location: null));
+            return Text(state.display); //TODO обработку ошибок
+          }
+          return Scaffold();
         }
       },
     );

@@ -18,6 +18,7 @@ class Temperature extends StatelessWidget {
             '${data.temperature} C°',
             style: TextStyle(
               fontSize: 50,
+              color: Colors.grey[700],
             ),
           ),
           Text(

@@ -4,6 +4,11 @@ import 'package:weather/Bloc/Classes/classes.dart';
 import 'package:weather/Bloc/Classes/Albums/album.dart';
 import 'package:weather/Bloc/Classes/Albums/album5days.dart';
 
+class LoadAlbumException implements Exception {
+  String cause;
+  LoadAlbumException(this.cause);
+}
+
 class Albums {
   Album album;
   Album5Days album5days;
@@ -33,7 +38,7 @@ Future<Album> fetchAlbumWithCoords(String api, String lat, String lon) async {
   if (response.statusCode == 200) {
     return Album.fromJson(jsonDecode(response.body));
   } else {
-    throw Exception('Failed to load album');
+    throw LoadAlbumException('Failed to load album');
   }
 }
 
@@ -46,7 +51,7 @@ Future<Album> fetchAlbumWithCity(String api, String location) async {
   if (response.statusCode == 200) {
     return Album.fromJson(jsonDecode(response.body));
   } else {
-    throw Exception('Failed to load album');
+    throw LoadAlbumException('Failed to load album');
   }
 }
 
@@ -60,7 +65,7 @@ Future<Album5Days> fetchAlbum5WithCoords(
   if (response.statusCode == 200) {
     return Album5Days.fromJson(jsonDecode(response.body));
   } else {
-    throw Exception('Failed to load album');
+    throw LoadAlbumException('Failed to load album');
   }
 }
 
@@ -73,6 +78,6 @@ Future<Album5Days> fetchAlbum5WithCity(String api, String location) async {
   if (response.statusCode == 200) {
     return Album5Days.fromJson(jsonDecode(response.body));
   } else {
-    throw Exception('Failed to load album');
+    throw LoadAlbumException('Failed to load album');
   }
 }
