@@ -41,7 +41,7 @@ class _SearchPageState extends State<SearchPage> {
             icon: Icon(
               Icons.arrow_back,
               size: 25,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         ),

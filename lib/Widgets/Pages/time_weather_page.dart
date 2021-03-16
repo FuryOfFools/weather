@@ -21,7 +21,7 @@ class TimeWeatherPage extends StatelessWidget {
             icon: Icon(
               Icons.arrow_back,
               size: 25,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         ),
