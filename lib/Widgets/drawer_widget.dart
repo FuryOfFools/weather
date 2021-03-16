@@ -15,50 +15,44 @@ class DrawerWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.room,
-                  size: 20,
-                  color: Color(0xffec6e4c),
-                ),
-                Text(
-                  'Locate Current City',
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                  ),
-                ),
-              ],
-            ),
-            onTap: () {
-              BlocProvider.of<WeatherBloc>(context)
-                  .add(LocationEvent(location: null));
-            },
+          _locateCity(
+            context,
+            Icons.room,
+            'Locate Current City',
+            LocationEvent(location: null),
           ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.search,
-                  size: 20,
-                  color: Color(0xffec6e4c),
-                ),
-                Text(
-                  'Search City',
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                  ),
-                ),
-              ],
+          _locateCity(
+            context,
+            Icons.search,
+            'Search City',
+            SearchEvent(data: state.data),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _locateCity(context, IconData icons, String text, WeatherEvent event) {
+    return ListTile(
+      title: Row(
+        children: [
+          Icon(
+            icons, // Icons.room,
+            size: 20,
+            color: Color(0xffec6e4c),
+          ),
+          Text(
+            text, //,
+            style: TextStyle(
+              color: Colors.grey[800],
             ),
-            onTap: () {
-              BlocProvider.of<WeatherBloc>(context)
-                  .add(SearchEvent(data: state.data));
-            },
           ),
         ],
       ),
+      onTap: () {
+        BlocProvider.of<WeatherBloc>(context)
+            .add(event); //LocationEvent(location: null));
+      },
     );
   }
 }

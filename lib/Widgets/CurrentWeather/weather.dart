@@ -15,45 +15,53 @@ class Weather extends StatelessWidget {
       margin: EdgeInsets.all(20),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image(
-                width: 40,
-                height: 40,
-                image: AssetImage(data.weatherIcon),
-              ),
-              Text(
-                data.weatherInfo,
-                style: TextStyle(
-                  fontSize: 30,
-                  color: Color(0xffec6e4c),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Description: ',
-                style: TextStyle(
-                  fontSize: 13,
-                  color: Colors.grey[700],
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                '${data.weatherDescription}',
-                style: TextStyle(
-                  fontSize: 13,
-                  color: Colors.grey[700],
-                ),
-              ),
-            ],
-          ),
+          _weatherIcon(data),
+          _weatherDescr(data),
         ],
       ),
+    );
+  }
+
+  Widget _weatherIcon(data) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image(
+          width: 40,
+          height: 40,
+          image: AssetImage(data.weatherIcon),
+        ),
+        Text(
+          data.weatherInfo,
+          style: TextStyle(
+            fontSize: 30,
+            color: Color(0xffec6e4c),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _weatherDescr(data) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          'Description: ',
+          style: TextStyle(
+            fontSize: 13,
+            color: Colors.grey[700],
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          '${data.weatherDescription}',
+          style: TextStyle(
+            fontSize: 13,
+            color: Colors.grey[700],
+          ),
+        ),
+      ],
     );
   }
 }

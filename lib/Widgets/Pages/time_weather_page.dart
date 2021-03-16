@@ -11,40 +11,41 @@ class TimeWeatherPage extends StatelessWidget {
     var time = list.dateTime;
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('${list.cityTitle}'),
-          leading: IconButton(
-            onPressed: () {
-              BlocProvider.of<WeatherBloc>(context)
-                  .add(DisplayEvent(data: state.data));
-            },
-            icon: Icon(
-              Icons.arrow_back,
-              size: 25,
-              color: Colors.black,
-            ),
-          ),
-        ),
+        appBar: _appBar(context, list, state),
         body: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Text(
-                    ' ${time.month}.${time.day}.${time.year} (${time.hour}:00)',
-                    style: TextStyle(
-                      fontSize: 17,
-                      // color: Color(0xffec6e4c),
-                      // fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            _dateTimeContainer(time),
             CurrentWeather(),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _dateTimeContainer(time) {
+    return Container(
+      padding: EdgeInsets.only(top: 20),
+      child: Text(
+        ' ${time.month}.${time.day}.${time.year} (${time.hour}:00)',
+        style: TextStyle(
+          fontSize: 17,
+        ),
+      ),
+    );
+  }
+
+  Widget _appBar(context, list, state) {
+    return AppBar(
+      title: Text('${list.cityTitle}'),
+      leading: IconButton(
+        onPressed: () {
+          BlocProvider.of<WeatherBloc>(context)
+              .add(DisplayEvent(data: state.data));
+        },
+        icon: Icon(
+          Icons.arrow_back,
+          size: 25,
+          color: Colors.black,
         ),
       ),
     );

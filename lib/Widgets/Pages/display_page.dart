@@ -17,27 +17,31 @@ class DisplayPage extends StatelessWidget {
           title: Text('${data.cityTitle}'),
         ),
         body: Container(
-          child: ListView.builder(
-            scrollDirection: Axis.vertical,
-            itemCount: data.list.length,
-            itemBuilder: (context, int index) {
-              if (index == 0)
-                return Column(
-                  children: [
-                    CurrentWeather(),
-                    TimeWeather(index: index),
-                  ],
-                );
-              else
-                return Column(
-                  children: [
-                    TimeWeather(index: index),
-                  ],
-                );
-            },
-          ),
+          child: _listViewBuilder(data),
         ),
       ),
+    );
+  }
+
+  Widget _listViewBuilder(data) {
+    return ListView.builder(
+      scrollDirection: Axis.vertical,
+      itemCount: data.list.length,
+      itemBuilder: (context, int index) {
+        if (index == 0)
+          return Column(
+            children: [
+              CurrentWeather(),
+              TimeWeather(index: index),
+            ],
+          );
+        else
+          return Column(
+            children: [
+              TimeWeather(index: index),
+            ],
+          );
+      },
     );
   }
 }

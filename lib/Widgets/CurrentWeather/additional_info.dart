@@ -33,19 +33,7 @@ class AdditionalInfo extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text('Wind: ',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey[800],
-                          fontWeight: FontWeight.bold,
-                        )),
-                    Text(
-                      '${data.windSpeed} m/s',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey[800],
-                      ),
-                    ),
+                    _addInfo('Wind: ', '${data.windSpeed} m/s', data),
                     Transform.rotate(
                       angle: data.windDeg.toDouble(),
                       child: Icon(
@@ -55,104 +43,38 @@ class AdditionalInfo extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Text(
-                      'Humidity: ',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey[800],
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      '${data.humidity}%',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey[800],
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      'Pressure: ',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey[800],
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      '${data.pressure} hPa',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey[800],
-                      ),
-                    ),
-                  ],
-                ),
+                _addInfo('Humidity: ', '${data.humidity}%', data),
+                _addInfo('Pressure: ', '${data.pressure} hPa', data),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Row(
-                  children: [
-                    Text(
-                      'Visibility: ',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey[800],
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      '${data.visibility} m',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey[800],
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      'Cloudiness: ',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey[800],
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      '${data.cloudiness}%',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey[800],
-                      ),
-                    ),
-                  ],
-                ),
-                // Text(
-                //   'Sunset: WIP',
-                //   style: TextStyle(
-                //     fontSize: 12,
-                //     color: Colors.grey[800],
-                //   ),
-                // ),
-                // Text(
-                //   'Sunrise: WIP',
-                //   style: TextStyle(
-                //     fontSize: 12,
-                //     color: Colors.grey[800],
-                //   ),
-                // ),
+                _addInfo('Visibility: ', '${data.visibility} m', data),
+                _addInfo('Cloudiness: ', '${data.cloudiness}%', data),
               ],
             )
           ],
         ));
+  }
+
+  Widget _addInfo(String descr, String info, data) {
+    return Row(
+      children: [
+        Text(descr,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey[800],
+              fontWeight: FontWeight.bold,
+            )),
+        Text(
+          info,
+          style: TextStyle(
+            fontSize: 12,
+            color: Colors.grey[800],
+          ),
+        ),
+      ],
+    );
   }
 }
