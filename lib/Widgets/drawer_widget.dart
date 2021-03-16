@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/Bloc/Classes/classes.dart';
 import 'package:weather/Bloc/blocs.dart';
 
 class DrawerWidget extends StatelessWidget {
   final controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final state = BlocProvider.of<WeatherBloc>(context).state;
+    final WeatherState state = BlocProvider.of<WeatherBloc>(context).state;
     return Container(
       width: 250,
       decoration: BoxDecoration(
@@ -17,16 +18,22 @@ class DrawerWidget extends StatelessWidget {
         children: [
           _locateCity(
             context,
-            Icons.room,
-            'Locate Current City',
-            LocationEvent(location: null),
+            Icons.refresh_rounded,
+            'Refresh Weather',
+            WeatherRequestEvent(location: Location(city: state.data.cityTitle)),
           ),
           _locateCity(
             context,
             Icons.search,
             'Search City',
             SearchEvent(data: state.data),
-          )
+          ),
+          _locateCity(
+            context,
+            Icons.room,
+            'Locate City',
+            LocationEvent(location: null),
+          ),
         ],
       ),
     );
@@ -37,12 +44,12 @@ class DrawerWidget extends StatelessWidget {
       title: Row(
         children: [
           Icon(
-            icons, // Icons.room,
+            icons,
             size: 20,
             color: Color(0xffec6e4c),
           ),
           Text(
-            text, //,
+            text,
             style: TextStyle(
               color: Colors.grey[800],
             ),
@@ -50,8 +57,7 @@ class DrawerWidget extends StatelessWidget {
         ],
       ),
       onTap: () {
-        BlocProvider.of<WeatherBloc>(context)
-            .add(event); //LocationEvent(location: null));
+        BlocProvider.of<WeatherBloc>(context).add(event);
       },
     );
   }
