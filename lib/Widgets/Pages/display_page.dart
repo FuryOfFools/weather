@@ -17,16 +17,21 @@ class DisplayPage extends StatelessWidget {
           title: Text('${data.cityTitle}'),
         ),
         body: Container(
-          child: _listViewBuilder(data),
+          child: ListViewBuilder(length: data.list.length),
         ),
       ),
     );
   }
+}
 
-  Widget _listViewBuilder(data) {
+class ListViewBuilder extends StatelessWidget {
+  final int length;
+  const ListViewBuilder({Key key, this.length}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
     return ListView.builder(
       scrollDirection: Axis.vertical,
-      itemCount: data.list.length,
+      itemCount: length,
       itemBuilder: (context, int index) {
         if (index == 0)
           return Column(

@@ -10,29 +10,28 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  final controller = TextEditingController();
+  final _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final state = BlocProvider.of<WeatherBloc>(context).state;
     return SafeArea(
       child: Scaffold(
-        appBar: _appBar(state),
+        appBar: _appBar(state.data),
         body: Column(
           children: [
-            _textField(),
+            TextBox(controller: _controller),
           ],
         ),
       ),
     );
   }
 
-  Widget _appBar(state) {
+  AppBar _appBar(data) {
     return AppBar(
       title: Text('Search weather in...'),
       leading: IconButton(
         onPressed: () {
-          BlocProvider.of<WeatherBloc>(context)
-              .add(DisplayEvent(data: state.data));
+          BlocProvider.of<WeatherBloc>(context).add(DisplayEvent(data: data));
         },
         icon: Icon(
           Icons.arrow_back,
@@ -42,10 +41,21 @@ class _SearchPageState extends State<SearchPage> {
       ),
     );
   }
+}
 
-  Widget _textField() {
+class TextBox extends StatefulWidget {
+  final TextEditingController controller;
+  const TextBox({Key key, this.controller}) : super(key: key);
+
+  @override
+  _TextBoxState createState() => _TextBoxState();
+}
+
+class _TextBoxState extends State<TextBox> {
+  @override
+  Widget build(BuildContext context) {
     return TextField(
-      controller: controller,
+      controller: widget.controller,
       onSubmitted: (value) {
         if (value != null) {
           BlocProvider.of<WeatherBloc>(context)
@@ -56,9 +66,9 @@ class _SearchPageState extends State<SearchPage> {
         suffixIcon: IconButton(
           icon: Icon(Icons.search),
           onPressed: () {
-            if (controller.text != null) {
-              BlocProvider.of<WeatherBloc>(context).add(
-                  LocationEvent(location: Location(city: controller.text)));
+            if (widget.controller.text != null) {
+              BlocProvider.of<WeatherBloc>(context).add(LocationEvent(
+                  location: Location(city: widget.controller.text)));
             }
           },
         ),

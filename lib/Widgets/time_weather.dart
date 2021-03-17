@@ -24,17 +24,7 @@ class TimeWeather extends StatelessWidget {
         width: double.infinity,
         height: 50,
         margin: EdgeInsets.all(5),
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey[300],
-              spreadRadius: 1,
-              blurRadius: 3,
-            ),
-          ],
-          borderRadius: BorderRadius.circular(8.0),
-          color: Colors.white,
-        ),
+        decoration: _decoration(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -51,29 +41,56 @@ class TimeWeather extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Text(temp),
                 ),
-                Container(
-                  width: 90,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        weather,
-                        style: TextStyle(
-                          color: Color(0xffec6e4c),
-                        ),
-                      ),
-                      Image(
-                        width: 40,
-                        height: 40,
-                        image: AssetImage(icon),
-                      ),
-                    ],
-                  ),
+                Weather(
+                  weather: weather,
+                  icon: icon,
                 ),
               ],
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  BoxDecoration _decoration() {
+    return BoxDecoration(
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey[300],
+          spreadRadius: 1,
+          blurRadius: 3,
+        ),
+      ],
+      borderRadius: BorderRadius.circular(8.0),
+      color: Colors.white,
+    );
+  }
+}
+
+class Weather extends StatelessWidget {
+  final String weather;
+  final String icon;
+  const Weather({Key key, this.weather, this.icon}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 90,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            weather,
+            style: TextStyle(
+              color: Color(0xffec6e4c),
+            ),
+          ),
+          Image(
+            width: 40,
+            height: 40,
+            image: AssetImage(icon),
+          ),
+        ],
       ),
     );
   }

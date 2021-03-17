@@ -15,14 +15,19 @@ class Weather extends StatelessWidget {
       margin: EdgeInsets.all(20),
       child: Column(
         children: [
-          _weatherIcon(data),
-          _weatherDescr(data),
+          WeatherIcon(data: data),
+          WeatherDescription(data: data),
         ],
       ),
     );
   }
+}
 
-  Widget _weatherIcon(data) {
+class WeatherIcon extends StatelessWidget {
+  final data;
+  const WeatherIcon({Key key, this.data}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -41,8 +46,13 @@ class Weather extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget _weatherDescr(data) {
+class WeatherDescription extends StatelessWidget {
+  final data;
+  const WeatherDescription({Key key, this.data}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

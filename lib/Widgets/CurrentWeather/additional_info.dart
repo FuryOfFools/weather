@@ -15,17 +15,7 @@ class AdditionalInfo extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.all(10),
         margin: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          color: Colors.amber[50],
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey[200],
-              spreadRadius: 1,
-              blurRadius: 2,
-            ),
-          ],
-        ),
+        decoration: _decoration(),
         child: Column(
           children: [
             Row(
@@ -33,9 +23,12 @@ class AdditionalInfo extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    _addInfo('Wind: ', '${data.windSpeed} m/s', data),
+                    AddInfo(
+                      description: 'Wind: ',
+                      info: '${data.windSpeed} m/s ${data.windDirection}',
+                    ),
                     Transform.rotate(
-                      angle: data.windDeg.toDouble(),
+                      angle: data.windDegrees.toDouble(),
                       child: Icon(
                         Icons.arrow_back,
                         size: 12,
@@ -43,25 +36,57 @@ class AdditionalInfo extends StatelessWidget {
                     ),
                   ],
                 ),
-                _addInfo('Humidity: ', '${data.humidity}%', data),
-                _addInfo('Pressure: ', '${data.pressure} hPa', data),
+                AddInfo(
+                  description: 'Humidity: ',
+                  info: '${data.humidity}%',
+                ),
+                AddInfo(
+                  description: 'Pressure: ',
+                  info: '${data.pressure} hPa',
+                ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _addInfo('Visibility: ', '${data.visibility} m', data),
-                _addInfo('Cloudiness: ', '${data.cloudiness}%', data),
+                AddInfo(
+                  description: 'Visibility: ',
+                  info: '${data.visibility} m',
+                ),
+                AddInfo(
+                  description: 'Cloudiness: ',
+                  info: '${data.cloudiness}%',
+                ),
               ],
             )
           ],
         ));
   }
 
-  Widget _addInfo(String descr, String info, data) {
+  BoxDecoration _decoration() {
+    return BoxDecoration(
+      borderRadius: BorderRadius.circular(8.0),
+      color: Colors.amber[50],
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey[200],
+          spreadRadius: 1,
+          blurRadius: 2,
+        ),
+      ],
+    );
+  }
+}
+
+class AddInfo extends StatelessWidget {
+  final String description, info;
+  const AddInfo({this.description, this.info, Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(descr,
+        Text(description,
             style: TextStyle(
               fontSize: 12,
               color: Colors.grey[800],

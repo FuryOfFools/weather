@@ -16,30 +16,36 @@ class DrawerWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _locateCity(
-            context,
-            Icons.refresh_rounded,
-            'Refresh Weather',
-            WeatherRequestEvent(location: Location(city: state.data.cityTitle)),
+          TileButton(
+            icons: Icons.refresh_rounded,
+            text: 'Refresh Weather',
+            event: WeatherRequestEvent(
+                location: Location(city: state.data.cityTitle)),
           ),
-          _locateCity(
-            context,
-            Icons.search,
-            'Search City',
-            SearchEvent(data: state.data),
+          TileButton(
+            icons: Icons.search,
+            text: 'Search City',
+            event: SearchEvent(data: state.data),
           ),
-          _locateCity(
-            context,
-            Icons.room,
-            'Locate City',
-            LocationEvent(location: null),
+          TileButton(
+            icons: Icons.room,
+            text: 'Locate City',
+            event: LocationEvent(location: null),
           ),
         ],
       ),
     );
   }
+}
 
-  Widget _locateCity(context, IconData icons, String text, WeatherEvent event) {
+class TileButton extends StatelessWidget {
+  final IconData icons;
+  final String text;
+  final WeatherEvent event;
+  const TileButton({Key key, this.icons, this.text, this.event})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
     return ListTile(
       title: Row(
         children: [
