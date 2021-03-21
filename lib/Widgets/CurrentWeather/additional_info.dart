@@ -8,30 +8,34 @@ class AdditionalInfo extends StatefulWidget {
 }
 
 class _AdditionalInfoState extends State<AdditionalInfo> {
-  var _height;
+  ValueNotifier<double> _height;
   @override
   void initState() {
     super.initState();
-    _height = 10.0;
+    _height = ValueNotifier(10.0);
     Future.delayed(Duration(microseconds: 1), () {
-      setState(() {
+      //setState(() {
 // Да я знаю что setState не стоит использовать, но сделал его только по причине
 // того что надо обязательность сделать implicit анимацию я бы вместо этого скорее
 // использовал explicit анимацию, например, SizeTransition. Другого решения я не придумал,
 // а делать для этого целый блок я считаю лишняя трата времени и сил. Надеюсь на понимание o_-
-        _height = 70.0;
-      });
+      _height.value = 70.0;
+      // });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      height: _height,
-      curve: Curves.fastOutSlowIn,
-      duration: const Duration(milliseconds: 300),
-      child: AdditionalInfoContainer(),
-    );
+    return ValueListenableBuilder(
+        valueListenable: _height,
+        builder: (_, double value, __) {
+          return AnimatedContainer(
+            height: value,
+            curve: Curves.fastOutSlowIn,
+            duration: const Duration(milliseconds: 300),
+            child: AdditionalInfoContainer(),
+          );
+        });
   }
 }
 

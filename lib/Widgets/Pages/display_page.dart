@@ -53,6 +53,7 @@ class _RefreshListState extends State<RefreshList> {
         onRefresh: () {
           BlocProvider.of<WeatherBloc>(context).add(
               WeatherRequestEvent(location: Location(city: data.cityTitle)));
+          return;
         },
         child: ListViewBuilder(length: data.list.length),
       ),
