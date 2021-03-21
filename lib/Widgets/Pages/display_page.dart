@@ -30,9 +30,31 @@ Pressure: ${data.pressure} hPa Humidity: ${data.humidity}% Cloudiness: ${data.cl
                 }),
           ],
         ),
-        body: Container(
-          child: ListViewBuilder(length: data.list.length),
-        ),
+        body: RefreshList(),
+      ),
+    );
+  }
+}
+
+class RefreshList extends StatefulWidget {
+  @override
+  _RefreshListState createState() => _RefreshListState();
+}
+
+class _RefreshListState extends State<RefreshList> {
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      new GlobalKey<RefreshIndicatorState>();
+  @override
+  Widget build(BuildContext context) {
+    final WeatherData data = BlocProvider.of<WeatherBloc>(context).state.data;
+    return Container(
+      child: RefreshIndicator(
+        key: _refreshIndicatorKey,
+        onRefresh: () {
+          BlocProvider.of<WeatherBloc>(context).add(
+              WeatherRequestEvent(location: Location(city: data.cityTitle)));
+        },
+        child: ListViewBuilder(length: data.list.length),
       ),
     );
   }
