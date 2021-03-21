@@ -14,13 +14,9 @@ class _AdditionalInfoState extends State<AdditionalInfo> {
     super.initState();
     _height = ValueNotifier(10.0);
     Future.delayed(Duration(microseconds: 1), () {
-      //setState(() {
-// Да я знаю что setState не стоит использовать, но сделал его только по причине
-// того что надо обязательность сделать implicit анимацию я бы вместо этого скорее
-// использовал explicit анимацию, например, SizeTransition. Другого решения я не придумал,
-// а делать для этого целый блок я считаю лишняя трата времени и сил. Надеюсь на понимание o_-
       _height.value = 70.0;
-      // });
+      // я бы вместо этого хотел бы сделать SizeTransition, но так как обязательно
+      // надо было сделать хотя бы одну implicit анимацию я сделал
     });
   }
 
