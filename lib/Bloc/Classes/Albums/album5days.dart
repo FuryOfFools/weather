@@ -17,7 +17,7 @@ class Album5Days {
     // message = json['message'];
     //cnt = json['cnt'];
     if (json['list'] != null) {
-      list = new List<List1>();
+      list = <List1>[];
       json['list'].forEach((v) {
         list.add(new List1.fromJson(v));
       });
@@ -62,7 +62,7 @@ class List1 {
     dt = json['dt'];
     main = json['main'] != null ? new Main.fromJson(json['main']) : null;
     if (json['weather'] != null) {
-      weather = new List<Weather>();
+      weather = <Weather>[];
       json['weather'].forEach((v) {
         weather.add(new Weather.fromJson(v));
       });

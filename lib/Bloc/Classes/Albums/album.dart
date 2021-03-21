@@ -56,7 +56,7 @@ class Album {
   Album.fromJson(Map<String, dynamic> json) {
     coord = json['coord'] != null ? new Coord.fromJson(json['coord']) : null;
     if (json['weather'] != null) {
-      weather = new List<Weather>();
+      weather = <Weather>[];
       json['weather'].forEach((v) {
         weather.add(new Weather.fromJson(v));
       });

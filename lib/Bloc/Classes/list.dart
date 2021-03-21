@@ -1,5 +1,4 @@
 import 'package:weather/Bloc/Classes/Albums/album5days.dart';
-import 'package:weather/Bloc/Classes/data.dart';
 import 'package:weather/Bloc/Classes/resources.dart';
 
 class WeatherList {

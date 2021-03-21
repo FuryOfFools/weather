@@ -13,15 +13,16 @@ class TimeWeather extends StatelessWidget {
         temp = '${data.list[index].temperature} C°',
         weather = '${data.list[index].weatherInfo}',
         icon = '${data.list[index].weatherIcon}';
-    return FlatButton(
+    return TextButton(
       onPressed: () {
         BlocProvider.of<WeatherBloc>(context)
             .add(OpenTimeWeatherEvent(data: data, list: data.list[index]));
       },
       child: Container(
         width: double.infinity,
-        height: 40,
-        margin: const EdgeInsets.all(5),
+        //height: 40,
+        padding: const EdgeInsets.all(2),
+        //margin: const EdgeInsets.all(5),
         decoration: _decoration(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
