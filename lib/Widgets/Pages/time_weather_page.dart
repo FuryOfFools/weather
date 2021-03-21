@@ -10,14 +10,21 @@ class TimeWeatherPage extends StatelessWidget {
     final state = BlocProvider.of<WeatherBloc>(context).state;
     final list = state.additionalData;
     final time = list.dateTime;
-    return SafeArea(
-      child: Scaffold(
-        appBar: _appBar(context, list, state),
-        body: Column(
-          children: [
-            DateTimeContainer(time: time),
-            CurrentWeather(),
-          ],
+    return WillPopScope(
+      onWillPop: () {
+        BlocProvider.of<WeatherBloc>(context)
+            .add(DisplayEvent(data: state.data));
+        return;
+      },
+      child: SafeArea(
+        child: Scaffold(
+          appBar: _appBar(context, list, state),
+          body: Column(
+            children: [
+              DateTimeContainer(time: time),
+              CurrentWeather(),
+            ],
+          ),
         ),
       ),
     );

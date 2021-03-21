@@ -14,13 +14,20 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     final state = BlocProvider.of<WeatherBloc>(context).state;
-    return SafeArea(
-      child: Scaffold(
-        appBar: _appBar(state.data),
-        body: Column(
-          children: [
-            TextBox(controller: _controller),
-          ],
+    return WillPopScope(
+      onWillPop: () {
+        BlocProvider.of<WeatherBloc>(context)
+            .add(DisplayEvent(data: state.data));
+        return;
+      },
+      child: SafeArea(
+        child: Scaffold(
+          appBar: _appBar(state.data),
+          body: Column(
+            children: [
+              TextBox(controller: _controller),
+            ],
+          ),
         ),
       ),
     );
