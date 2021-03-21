@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 class Resources {
   static const weatherPng = {
     '01d': 'assets/images/01d.png',
@@ -19,4 +21,15 @@ class Resources {
     '50d': 'assets/images/50d.png',
     '50n': 'assets/images/50n.png',
   };
+}
+
+Future<void> shareData(String data) async {
+  const platform = const MethodChannel('weather/share');
+  try {
+    await platform.invokeMethod('shareData', data);
+  } on PlatformException catch (e) {
+    print('Ошибка платформы: ${e.message}');
+  } catch (e) {
+    print(e);
+  }
 }

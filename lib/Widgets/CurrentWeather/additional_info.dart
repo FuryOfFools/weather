@@ -2,50 +2,51 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/Bloc/blocs.dart';
 
-class AdditionalInfo extends StatelessWidget {
+class AdditionalInfo extends StatefulWidget {
+  @override
+  _AdditionalInfoState createState() => _AdditionalInfoState();
+}
+
+class _AdditionalInfoState extends State<AdditionalInfo> {
+  var _height;
+  @override
+  void initState() {
+    super.initState();
+    _height = 10.0;
+    Future.delayed(Duration(microseconds: 1), () {
+      setState(() {
+// Да я знаю что setState не стоит использовать, но сделал его только по причине
+// того что надо обязательность сделать implicit анимацию я бы вместо этого скорее
+// использовал explicit анимацию, например, SizeTransition. Другого решения я не придумал,
+// а делать для этого целый блок я считаю лишняя трата времени и сил. Надеюсь на понимание o_-
+        _height = 70.0;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      height: _height,
+      curve: Curves.fastOutSlowIn,
+      duration: const Duration(milliseconds: 300),
+      child: AdditionalInfoContainer(),
+    );
+  }
+}
+
+class AdditionalInfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = BlocProvider.of<WeatherBloc>(context).state;
-    var data;
-    if (state.additionalData == null)
-      data = state.data;
-    else
-      data = state.additionalData;
+    var data = state.additionalData ?? state.data;
     return Container(
         width: double.infinity,
-        padding: EdgeInsets.all(10),
-        margin: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         decoration: _decoration(),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Row(
-                  children: [
-                    AddInfo(
-                      description: 'Wind: ',
-                      info: '${data.windSpeed} m/s ${data.windDirection}',
-                    ),
-                    Transform.rotate(
-                      angle: data.windDegrees.toDouble(),
-                      child: Icon(
-                        Icons.arrow_back,
-                        size: 12,
-                      ),
-                    ),
-                  ],
-                ),
-                AddInfo(
-                  description: 'Humidity: ',
-                  info: '${data.humidity}%',
-                ),
-                AddInfo(
-                  description: 'Pressure: ',
-                  info: '${data.pressure} hPa',
-                ),
-              ],
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -56,6 +57,20 @@ class AdditionalInfo extends StatelessWidget {
                 AddInfo(
                   description: 'Cloudiness: ',
                   info: '${data.cloudiness}%',
+                ),
+                AddInfo(
+                  description: 'Humidity: ',
+                  info: '${data.humidity}%',
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Wind(data: data),
+                AddInfo(
+                  description: 'Pressure: ',
+                  info: '${data.pressure} hPa',
                 ),
               ],
             )
@@ -72,6 +87,29 @@ class AdditionalInfo extends StatelessWidget {
           color: Colors.grey[200],
           spreadRadius: 1,
           blurRadius: 2,
+        ),
+      ],
+    );
+  }
+}
+
+class Wind extends StatelessWidget {
+  final data;
+  const Wind({Key key, this.data}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        AddInfo(
+          description: 'Wind: ',
+          info: '${data.windSpeed} m/s',
+        ),
+        Transform.rotate(
+          angle: data.windDegrees.toDouble(),
+          child: Icon(
+            Icons.arrow_back,
+            size: 12,
+          ),
         ),
       ],
     );

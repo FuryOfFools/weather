@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'Classes/classes.dart';
+import 'package:weather/Bloc/Classes/classes.dart';
 
 class WeatherState extends Equatable {
   final String display = '';

@@ -2,17 +2,51 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/Bloc/blocs.dart';
 
-class Weather extends StatelessWidget {
+class Weather extends StatefulWidget {
+  @override
+  _WeatherState createState() => _WeatherState();
+}
+
+class _WeatherState extends State<Weather> with TickerProviderStateMixin {
+  AnimationController _controller;
+  Animation<double> _animation;
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    )..forward();
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.fastOutSlowIn,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: _animation,
+      child: const WeatherContainer(),
+    );
+  }
+}
+
+class WeatherContainer extends StatelessWidget {
+  const WeatherContainer({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final state = BlocProvider.of<WeatherBloc>(context).state;
     var data;
-    if (state.additionalData == null)
-      data = state.data;
-    else
-      data = state.additionalData;
+    data = state.additionalData ?? state.data;
     return Container(
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       child: Column(
         children: [
           WeatherIcon(data: data),
@@ -40,7 +74,7 @@ class WeatherIcon extends StatelessWidget {
           data.weatherInfo,
           style: TextStyle(
             fontSize: 30,
-            color: Color(0xffec6e4c),
+            color: const Color(0xffec6e4c),
           ),
         ),
       ],

@@ -5,8 +5,6 @@ import 'package:weather/Bloc/blocs.dart';
 class TimeWeather extends StatelessWidget {
   final int index;
   const TimeWeather({Key key, this.index}) : super(key: key);
-
-  @override
   Widget build(BuildContext context) {
     final data = BlocProvider.of<WeatherBloc>(context).state.data;
     final String date =
@@ -22,14 +20,14 @@ class TimeWeather extends StatelessWidget {
       },
       child: Container(
         width: double.infinity,
-        height: 50,
-        margin: EdgeInsets.all(5),
+        height: 40,
+        margin: const EdgeInsets.all(5),
         decoration: _decoration(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               child: Text(
                 '$date ($time)',
                 style: TextStyle(color: Colors.grey[600]),
@@ -38,7 +36,7 @@ class TimeWeather extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Text(temp),
                 ),
                 Weather(
@@ -82,7 +80,7 @@ class Weather extends StatelessWidget {
           Text(
             weather,
             style: TextStyle(
-              color: Color(0xffec6e4c),
+              color: const Color(0xffec6e4c),
             ),
           ),
           Image(
