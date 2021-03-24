@@ -1,16 +1,33 @@
-# weather
+# Приложение Погода
+Тестируем Flutter для курсов и просто так
 
-A new Flutter project.
+## Планирую сделать
+Приложение погоды на основе [Weather API - OpenWeatherMap](https://openweathermap.org/api)
 
-## Getting Started
+### Текущая Погода
+- [x] Сделать форму текущей погоды
+- [x] Получить [текущую погоду](https://openweathermap.org/current)
+- [x] Выбор локации по названию города (конструктор)
+- [x] Поиск погоды по [координатам](https://pub.dev/packages/location)
+- [x] Обработка json текущей погоды
+- [x] Переделать логику: получаем координаты (или ставим London), отправляем запрос через API, парсим json, вбиваем данные о погоде в форму
+- [x] Добавить инфу о текущей погоде в форму (ветер, давление, влажность)
+### Bloc
+- [x] Переделать логику приложения на блок
+### Погода на ближайшие 5 дней
+- [x] Получить [погоду на ближайшие 5 дней](https://openweathermap.org/forecast5)
+- [x] Разбить погоду по часам
+- [x] Сделать список с погодой
+### Дополнительно
+- [x] Сделать экран для выбора города + геолокация 
+- [x] Анимации
+- [x] Шейринг погоды в другие источники
+- [x] Кнопка 'Назад' (так как нет навигации)
+- [x] swipe to refresh
+- [ ] Экран настроек: единицы измерения, изменение ключа API, язык
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## One call API (NOPE)
+- [ ] Переделать через другой апи [One Call API](https://openweathermap.org/api/one-call-api)
+- [ ] Текущая погода (+Предупреждение)
+- [ ] Ежедневная погода
+- [ ] Почасовая погода
