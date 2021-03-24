@@ -52,5 +52,9 @@ Stream<WeatherState> _mapWeatherEventToState(WeatherRequestEvent event) async* {
     yield WeatherDisplayState(data: data);
   } on LoadAlbumException catch (e) {
     yield ErrorState(e.cause);
+  } on NoInternetExeption catch (e) {
+    yield NoInternetState(
+        display: e.cause,
+        data: Location(lat: event.location.lat, lon: event.location.lon));
   }
 }

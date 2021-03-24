@@ -72,3 +72,11 @@ class ErrorState extends WeatherState {
   @override
   List<Object> get props => [display];
 }
+
+class NoInternetState extends WeatherState {
+  final String display;
+  final data;
+  NoInternetState({this.data, this.display});
+  @override
+  List<Object> get props => [display];
+}

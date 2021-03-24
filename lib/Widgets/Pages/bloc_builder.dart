@@ -34,6 +34,9 @@ class _WeatherBlocBuilderState extends State<WeatherBlocBuilder> {
                 .add(LocationEvent(location: null));
             return Text(state.display); //TODO обработку ошибок
           }
+          if (state is NoInternetState) {
+            return NoInternetPage();
+          }
           return Scaffold();
         }
       },

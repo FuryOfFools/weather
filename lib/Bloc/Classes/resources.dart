@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 
 class Resources {
-  static String apiKey = '98a3681fb714bcff7aa402873d3642d6';
+  static const String apiKey = '98a3681fb714bcff7aa402873d3642d6';
   static const weatherPng = {
     '01d': 'assets/images/01d.png',
     '01n': 'assets/images/01n.png',
