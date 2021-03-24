@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:weather/Bloc/Classes/classes.dart';
@@ -45,7 +47,7 @@ Future<Album> fetchAlbumWithCoords(String api, String lat, String lon) async {
     } else {
       throw LoadAlbumException('Failed to load album');
     }
-  } on NoInternetExeption catch (_) {
+  } on SocketException catch (_) {
     throw NoInternetExeption('No internet connection');
   }
 }
@@ -62,7 +64,7 @@ Future<Album> fetchAlbumWithCity(String api, String location) async {
     } else {
       throw LoadAlbumException('Failed to load album');
     }
-  } on NoInternetExeption catch (_) {
+  } on SocketException catch (_) {
     throw NoInternetExeption('No internet connection');
   }
 }
@@ -80,7 +82,7 @@ Future<Album5Days> fetchAlbum5WithCoords(
     } else {
       throw LoadAlbumException('Failed to load album');
     }
-  } on NoInternetExeption catch (_) {
+  } on SocketException catch (_) {
     throw NoInternetExeption('No internet connection');
   }
 }
@@ -97,7 +99,7 @@ Future<Album5Days> fetchAlbum5WithCity(String api, String location) async {
     } else {
       throw LoadAlbumException('Failed to load album');
     }
-  } on NoInternetExeption catch (_) {
+  } on SocketException catch (_) {
     throw NoInternetExeption('No internet connection');
   }
 }

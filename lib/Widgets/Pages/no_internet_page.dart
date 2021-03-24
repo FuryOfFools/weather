@@ -8,17 +8,24 @@ class NoInternetPage extends StatelessWidget {
     final state = BlocProvider.of<WeatherBloc>(context).state;
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            Text(state.display),
-            TextButton(
-              onPressed: () {
-                BlocProvider.of<WeatherBloc>(context)
-                    .add(WeatherRequestEvent(location: state.data));
-              },
-              child: Text('Try again'),
-            )
-          ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(state.display),
+              TextButton(
+                onPressed: () {
+                  BlocProvider.of<WeatherBloc>(context)
+                      .add(WeatherRequestEvent(location: state.data));
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  color: Colors.orange[50],
+                  child: Text('Try again'),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
