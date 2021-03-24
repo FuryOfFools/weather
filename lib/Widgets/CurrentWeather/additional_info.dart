@@ -7,35 +7,41 @@ class AdditionalInfo extends StatefulWidget {
   _AdditionalInfoState createState() => _AdditionalInfoState();
 }
 
-class _AdditionalInfoState extends State<AdditionalInfo> {
-  ValueNotifier<double> _height;
+class _AdditionalInfoState extends State<AdditionalInfo>
+    with TickerProviderStateMixin {
+  AnimationController _controller;
+  Animation<double> _animation;
   @override
   void initState() {
     super.initState();
-    _height = ValueNotifier(10.0);
-    Future.delayed(Duration(microseconds: 1), () {
-      _height.value = 70.0;
-      // я бы вместо этого хотел бы сделать SizeTransition, но так как обязательно
-      // надо было сделать хотя бы одну implicit анимацию я сделал
-    });
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    )..forward();
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.fastOutSlowIn,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-        valueListenable: _height,
-        builder: (_, double value, __) {
-          return AnimatedContainer(
-            height: value,
-            curve: Curves.fastOutSlowIn,
-            duration: const Duration(milliseconds: 300),
-            child: AdditionalInfoContainer(),
-          );
-        });
+    return SizeTransition(
+      sizeFactor: _animation,
+      axis: Axis.vertical,
+      child: const AdditionalInfoContainer(),
+    );
   }
 }
 
 class AdditionalInfoContainer extends StatelessWidget {
+  const AdditionalInfoContainer({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final state = BlocProvider.of<WeatherBloc>(context).state;
