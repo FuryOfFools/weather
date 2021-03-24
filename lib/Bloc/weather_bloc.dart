@@ -39,9 +39,7 @@ Stream<WeatherState> _mapWeatherEventToState(WeatherRequestEvent event) async* {
   try {
     yield WeatherUpdatinState();
     Albums albums = Albums();
-    String api =
-        '98a3681fb714bcff7aa402873d3642d6'; //TODO: переместить куда-нибудь
-    await albums.getData(api, event.location);
+    await albums.getData(Resources.apiKey, event.location);
     Location location = Location(
         city: albums.album.name,
         lat: event.location.lat,

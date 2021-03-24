@@ -15,7 +15,7 @@ class Albums {
 
   Albums({this.album, this.album5days});
 
-  Future getData(String api, Location location) async {
+  Future<void> getData(String api, Location location) async {
     //var albums = Albums();
     if (location.lat == null && location.lon == null) {
       this.album = await fetchAlbumWithCity(api, location.city);

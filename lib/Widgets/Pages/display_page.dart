@@ -26,7 +26,7 @@ Pressure: ${data.pressure} hPa Humidity: ${data.humidity}% Cloudiness: ${data.cl
                   Icons.share,
                 ),
                 onPressed: () async {
-                  await shareData(sharedData);
+                  await Resources.shareData(sharedData);
                 }),
           ],
         ),
@@ -67,23 +67,19 @@ class ListViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      scrollDirection: Axis.vertical,
-      itemCount: length,
-      itemBuilder: (context, int index) {
-        if (index == 0)
-          return Column(
-            children: [
-              CurrentWeather(),
-              TimeWeather(index: index),
-            ],
-          );
-        else
-          return Column(
-            children: [
-              TimeWeather(index: index),
-            ],
-          );
-      },
-    );
+        scrollDirection: Axis.vertical,
+        itemCount: length,
+        itemBuilder: (_, int index) => index == 0
+            ? Column(
+                children: [
+                  CurrentWeather(),
+                  TimeWeather(index: index),
+                ],
+              )
+            : Column(
+                children: [
+                  TimeWeather(index: index),
+                ],
+              ));
   }
 }

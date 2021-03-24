@@ -44,8 +44,7 @@ class TemperatureContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = BlocProvider.of<WeatherBloc>(context).state;
-    var data;
-    data = state.additionalData ?? state.data;
+    var data = state.additionalData ?? state.data;
     return Container(
       child: Column(
         children: [

@@ -40,7 +40,7 @@ class _SearchPageState extends State<SearchPage> {
         onPressed: () {
           BlocProvider.of<WeatherBloc>(context).add(DisplayEvent(data: data));
         },
-        icon: Icon(
+        icon: const Icon(
           Icons.arrow_back,
           size: 25,
           color: Colors.black,

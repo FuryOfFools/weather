@@ -72,7 +72,7 @@ class WeatherIcon extends StatelessWidget {
         ),
         Text(
           data.weatherInfo,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 30,
             color: const Color(0xffec6e4c),
           ),

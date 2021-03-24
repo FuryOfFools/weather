@@ -5,23 +5,25 @@ import 'package:weather/Bloc/Classes/location.dart';
 import 'package:weather/Bloc/Classes/resources.dart';
 
 class WeatherData {
-  String weatherInfo,
-      weatherDescription,
-      weatherIcon,
-      countryCode,
-      cityTitle,
-      windDirection;
-  num temperature,
-      feelTemperature,
-      pressure,
-      humidity,
-      visibility,
-      windSpeed,
-      windDegrees,
-      cloudiness,
-      timezone,
-      cityId;
-  DateTime dateTime, sunrise, sunset;
+  String weatherInfo;
+  String weatherDescription;
+  String weatherIcon;
+  String countryCode;
+  String cityTitle;
+  String windDirection;
+  num temperature;
+  num feelTemperature;
+  num pressure;
+  num humidity;
+  num visibility;
+  num windSpeed;
+  num windDegrees;
+  num cloudiness;
+  num timezone;
+  num cityId;
+  DateTime dateTime;
+  DateTime sunrise;
+  DateTime sunset;
   // Current Weather
   List<WeatherList> list = [];
   WeatherData({Album album, Location location, Album5Days album5days}) {

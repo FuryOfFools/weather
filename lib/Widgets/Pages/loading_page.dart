@@ -8,15 +8,9 @@ class LoadingPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                child:
-                    Text(BlocProvider.of<WeatherBloc>(context).state.display),
-                margin: EdgeInsets.all(10),
-              ),
-            ],
+          child: Container(
+            child: Text(BlocProvider.of<WeatherBloc>(context).state.display),
+            margin: EdgeInsets.all(10),
           ),
         ),
       ),

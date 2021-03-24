@@ -56,7 +56,7 @@ Pressure: ${list.pressure} hPa Humidity: ${list.humidity}% Cloudiness: ${list.cl
               Icons.share,
             ),
             onPressed: () async {
-              await shareData(sharedData);
+              await Resources.shareData(sharedData);
             }),
       ],
     );

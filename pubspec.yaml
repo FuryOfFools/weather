@@ -31,7 +31,7 @@ dependencies:
 
 dev_dependencies:
   equatable: ^1.0.0
-  bloc: ^6.0.0
+  # bloc: ^6.0.0
   flutter_bloc: ^6.0.0
   http: ^0.12.2
   location: ^3.2.4
